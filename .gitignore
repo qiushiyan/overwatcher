@@ -1,6 +1,8 @@
 # R renv
+data-raw/.Rproj.user/
 data-raw/renv/*
 !data-raw/renv/activate.R
+
 
 .vscode
 

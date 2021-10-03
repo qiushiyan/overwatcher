@@ -1,7 +1,0 @@
-
-match <- db$read_s3(config$s3_url_match)
-player <- db$read_s3(config$s3_url_player)
-
-  
-data$matches[ , .(stat_mean = mean(stat_amount), count = .N),
-              .(player_name, hero_name, map_name, stat_name)]
