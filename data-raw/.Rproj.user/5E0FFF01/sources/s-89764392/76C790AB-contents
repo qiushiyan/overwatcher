@@ -1,0 +1,5 @@
+default:
+  s3_url_map: https://owl-analysis.s3.amazonaws.com/maps/match_map_stats.csv
+  s3_url_match: https://owl-analysis.s3.amazonaws.com/matches/phs_2021_1.csv
+  s3_url_player: https://owl-analysis.s3.amazonaws.com/players/players_clean.csv
+  

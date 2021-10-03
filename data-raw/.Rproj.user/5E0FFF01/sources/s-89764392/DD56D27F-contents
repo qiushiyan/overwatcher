@@ -1,0 +1,9 @@
+data <- read_all(db, config$s3_url_match, config$s3_url_map, config$s3_url_player)
+
+maps_round <- data$maps_round
+matches_raw <- data$matches_raw
+map_type <- unique(matches_raw[, .(map_type, map_name)])
+maps <- maps_round[map_type, on = "map_name"][
+  , `:=`(attacker = NULL, defender = NULL)
+]
+maps 

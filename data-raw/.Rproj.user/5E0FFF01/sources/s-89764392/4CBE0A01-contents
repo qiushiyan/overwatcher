@@ -1,0 +1,50 @@
+pb <- 0.55
+advantage_multiplier <- 1.1 # Set = 1 for no advantage
+pbh <- 0.55 * advantage_multiplier
+pba <- 1 - (1 - 0.55) * advantage_multiplier
+
+times=10
+hfi <- c(0, 0, 1, 1, 1, 0, 0) #{NYC, NYC, ATL, ATL, ATL, NYC, NYC}
+result2 <- vector()  # result2是一个记录了每次模拟获胜概率的表
+
+for (j in 1:7) { # j是局数
+  p_win2 <- ifelse(hfi[j], pbh, pba) #p_win2是每次循环实时对应的获胜概率
+  game2_result[j] = rbinom(1, 1, p_win2)
+  print(game2_result)
+  if (j >= 4) {
+    if ((sum(game2_result, na.rm = TRUE) == 4) || (sum(1 - game2_result, na.rm = TRUE) == 4))  {
+      print("im here!")
+      break 
+    }
+  }
+}
+
+
+for (i in 1:times){
+  game2_result <- vector()
+  for (j in 1:7) { # j是局数
+    p_win2 <- ifelse(hfi[j], pbh, pba) #p_win2是每次循环实时对应的获胜概率
+    game2_result[j] = rbinom(1, 1, p_win2)
+    if (j >= 4) {
+      if ((sum(game2_result, na.rm = TRUE) == 4) || (sum(1 - game2_result, na.rm = TRUE) == 4))  {
+        break 
+      }
+    }
+  }
+  print(game2_result)
+  result2[i]=ifelse(sum(game2_result)==4,1,0)
+}
+print(result2)
+
+ans2=mean(result2)
+ans2
+result2 
+
+if ((sum(game2_result == "W") == 4) || (sum(game2_result == "L") == 4)) {
+  
+}
+
+x <- vector()
+x[1] = 1
+x[2] <- 2
+x
