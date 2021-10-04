@@ -64,7 +64,6 @@ class Hero(Enum):
     """
     all heroes
     """
-    ALL = "all heroes"
     ANA = "ana"
     ASHE = "ashe"
     BAPTISTE = "baptiste"

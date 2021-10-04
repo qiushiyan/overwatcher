@@ -14,7 +14,8 @@ class Database:
             "gt": ">",
             "le": "<=",
             "lt": "<",
-            "ne": "!="
+            "ne": "!=",
+            "in": "in"
         }
 
     def connect(self):
@@ -30,7 +31,11 @@ class Database:
         op_name = first_dict_key(op_pair)
         op_value = first_dict_value(op_pair)
         op = self.__operators.get(op_name)
-        return f"{col} {op} '{op_value}'"
+        if op != "in":
+            return f"{col} {op} '{op_value}'"
+        else:
+            values = "(" + ", ".join(["'" + i + "'" for i in op_value]) + ")"
+            return f"{col} in {values}"
 
     def compose_sql(self,
                     from_table: str,
@@ -38,7 +43,7 @@ class Database:
                     conditions: List[Dict[str, Dict]],
                     skip: int = 0,
                     limit: int = None):
-        if "*" in select_cols:
+        if select_cols is None:
             cols = "*"
         else:
             cols = ", ".join(select_cols)
@@ -75,6 +80,34 @@ class Database:
         sql = self.compose_sql(from_table="player_info",
                                select_cols=select_cols,
                                conditions=[],
+                               skip=skip,
+                               limit=limit)
+        df = pd.read_sql(sql, self.__con).fillna("")
+        return df
+
+    @safely
+    def fetch_player_stat_all():
+        pass
+
+    @safely
+    def fetch_player_stat(self, name: str, select_cols: List[str], stat: List[str], hero: List[str], map_: List[str], skip: int, limit: int):
+        conditions = [{"player_name": {"eq": name}}]
+        if stat is not None:
+            conditions.append({
+                "stat_name": {"in": stat},
+            })
+        if hero is not None:
+            conditions.append({
+                "hero_name": {"in": hero},
+            })
+        if map_ is not None:
+            conditions.append({
+                "map_name": {"in": map_}
+            })
+
+        sql = self.compose_sql(from_table="player_stats",
+                               select_cols=select_cols,
+                               conditions=conditions,
                                skip=skip,
                                limit=limit)
         df = pd.read_sql(sql, self.__con).fillna("")
