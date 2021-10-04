@@ -6,7 +6,7 @@ clean_common <- function(col) {
   if (is.character(col)) {
     str_to_lower(col)
   } else if (is.numeric(col))  {
-    round(col, 3)
+    round(col, 2)
   } else {
     col 
   }

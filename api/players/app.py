@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Query, Path
 from fastapi.params import Depends
-from typing import Optional
+from typing import Optional, List
+from api.utils import gen_response
 from db.db_session import db
 from api.constants import Team, Hero
 
@@ -14,7 +15,7 @@ app_players = APIRouter()
 
 
 @app_players.get("/info")
-async def get_player_info_all(select_cols="*"):
+async def get_player_info_all(select_cols: List[str] = Query(["*"])):
     """
     get all players's personal information, including:
 
@@ -23,17 +24,34 @@ async def get_player_info_all(select_cols="*"):
     - birth date
     - country
     - status (active or inactive)
+    - team_name,
+    - earnings
+    - role
+    - signature_hero
+    - age
     """
-    return db.fetch_player_info_all(select_cols)
+    res = db.fetch_player_info_all(select_cols)
+    return gen_response(res)
 
 
 @app_players.get("/info/{name}")
-async def get_player_info(name: str, select_cols="*"):
+async def get_player_info(name: str, select_cols: List[str] = Query(["*"])):
     """
-    get personal information of single player by name
-    """
-    return db.fetch_player_info(name, select_cols)
+    get personal information of single player by name, including
 
+    - player name (game id)
+    - player real name
+    - birth date
+    - country
+    - status (active or inactive)
+    - team_name,
+    - earnings
+    - role
+    - signature_hero
+    - age
+    """
+    res = db.fetch_player_info(name, select_cols)
+    return gen_response(res)
 
 # @app_players.get("/stats/{name}")
 # async def get_player_stat(name: str = Path(..., description="player name"), hero: Hero = Query(None, description="hero name"),  query_params: dict = Depends(common_query_params)):

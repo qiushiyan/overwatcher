@@ -1,12 +1,12 @@
-import sqlalchemy as db
+import sqlalchemy
 import pandas as pd
 from typing import Dict, List
-from api.utils import first_dict_key, first_dict_value
+from api.utils import first_dict_key, first_dict_value, safely
 
 
 class Database:
     def __init__(self, RDS_USER: str, RDS_PWD: str, RDS_URI: str):
-        self.engine = db.create_engine(
+        self.engine = sqlalchemy.create_engine(
             f"mysql+mysqlconnector://{RDS_USER}:{RDS_PWD}@{RDS_URI}:3306/overwatcher")
         self.__operators = {
             "eq": "=",
@@ -32,12 +32,16 @@ class Database:
         op = self.__operators.get(op_name)
         return f"{col} {op} '{op_value}'"
 
-    def compose_sql(self, from_table: str,
+    def compose_sql(self,
+                    from_table: str,
                     select_cols: List[str],
                     conditions: List[Dict[str, Dict]],
                     skip: int = 0,
                     limit: int = None):
-        cols = ", ".join(select_cols) if select_cols != "*" else select_cols
+        if "*" in select_cols:
+            cols = "*"
+        else:
+            cols = ", ".join(select_cols)
         if len(conditions) >= 1:
             parsed_conditions = " and ".join(
                 [self.parse_condition(condition) for condition in conditions])
@@ -57,19 +61,21 @@ class Database:
             LIMIT {skip}, {limit}
             """
 
+    @safely
     def fetch_player_info(self, name: str, select_cols: List[str]):
         sql = self.compose_sql(from_table="player_info",
                                select_cols=select_cols,
                                conditions=[
                                    {"player_name": {"eq": name}}])
-        df = pd.read_sql(sql, self.__con)
-        return df.to_json()
+        df = pd.read_sql(sql, self.__con).fillna("")
+        return df
 
+    @safely
     def fetch_player_info_all(self, select_cols: List[str], skip: int = 0, limit: int = None):
         sql = self.compose_sql(from_table="player_info",
                                select_cols=select_cols,
                                conditions=[],
                                skip=skip,
                                limit=limit)
-        df = pd.read_sql(sql, self.__con)
-        return df.to_json()
+        df = pd.read_sql(sql, self.__con).fillna("")
+        return df
