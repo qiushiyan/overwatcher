@@ -15,32 +15,56 @@ clean_common <- function(col) {
 read_all <- function(db, s3_url_map, s3_url_match, s3_url_player) {
   matches_raw <- (db$read_s3(s3_url_match))[stat_name != "NULL", lapply(.SD, clean_common)]
   maps_round <- (db$read_s3(s3_url_map))[, lapply(.SD, clean_common)]
-  players <- (db$read_s3)(s3_url_player)[, lapply(.SD, clean_common)]
+  player_info <- (db$read_s3)(s3_url_player)[, lapply(.SD, clean_common)]
   list(matches_raw = matches_raw, 
        maps_round = maps_round,
-       players = players)
+       player_info = player_info)
 }
 
 
 clean_maps <- function(maps_round, matches_raw) {
   mtype <- unique(matches_raw[, .(map_type, map_name)])
   maps <- maps_round[mtype, on = "map_name"][
-    , `:=`(attacker = NULL, defender = NULL)
-  ]
+    , `:=`(match_date = max(as.IDate(round_start_time)),
+          round_duration = round(as.numeric(round_end_time - round_start_time)/60, 1)), 
+    match_id
+  ][
+    , `:=`(attacker = NULL, 
+           defender = NULL, 
+           round_start_time = NULL, 
+           round_end_time = NULL)
+  ][
+    , `:=`(stage = case_when(
+      stage == "overwatch league - stage 1" ~ "season1 stage1",
+      stage == "overwatch league - stage 1 - title matches" ~ "season1 stage1 title",
+      stage == "overwatch league - stage 2" ~ "season1 stage2",
+      stage == "overwatch league - stage 2 - title matches" ~ "season1 stage2 title",
+      stage == "overwatch league - stage 3" ~ "season1 stage3",
+      stage == "overwatch league - stage 3 - title matches" ~ "season1 stage3 title",
+      stage == "overwatch league - stage 4" ~ "season1 stage4",
+      stage == "overwatch league - stage 4 - title matches" ~ "season1 stage4 title",
+      stage == "overwatch league inaugural season championship" ~ "season1 playoff", 
+      stage == "overwatch league stage 1" ~ "season2 stage1", 
+      stage == "overwatch league stage 1 title matches" ~ "season2 stage1 title", 
+      stage == "overwatch league stage 2" ~ "season2 stage2", 
+      stage == "overwatch league stage 2 title matches" ~ "season2 stage2 title", 
+      stage == "overwatch league stage 3" ~ "season2 stage3", 
+      stage == "overwatch league stage 3 title matches" ~ "season2 stage3 title", 
+      stage == "overwatch league stage 4" ~ "season2 stage4", 
+      stage == "overwatch league 2019 post-season" ~ "season2 playoff", 
+      stage == "owl 2020 regular season" ~ "season3", 
+      stage == "owl 2021" ~ "season4",
+      TRUE ~ NA_character_
+    ))
+  ][order(match_date)]
   maps 
 }
 
-clean_player_info <- function(players, matches_raw) {
-  player_info <- unique(matches_raw[, .(player_name, team_name)])[
-    players, on = "player_name"
-  ]
-  player_info
-}
 
 clean_matches <- function(matches_raw) {
   matches <- matches_raw[,  .(
     match_id = esports_match_id, 
-    date= as.IDate(start_time),
+    date = as.IDate(start_time),
     tournament = tournament_title, 
     map_name,
     player_name,
@@ -71,10 +95,9 @@ clean_all <- function(db, s3_url_map, s3_url_match, s3_url_player) {
   data <- read_all(db, s3_url_map, s3_url_match, s3_url_player)
   
   maps <- clean_maps(data$maps_round, data$matches_raw)
-  player_info <- clean_player_info(data$players, data$matches_raw)
   matches <- clean_matches(data$matches_raw)
   player_stats <- clean_player_stats(matches)
 
-  list(player_info = player_info, player_stats = player_stats, maps = maps, matches = matches)
+  list(player_info = data$player_info, player_stats = player_stats, maps = maps, matches = matches)
 }
 

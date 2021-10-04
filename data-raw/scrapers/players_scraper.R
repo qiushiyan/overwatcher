@@ -2,10 +2,9 @@ library(rvest)
 library(stringr)
 library(purrr)
 library(dplyr)
-library(data.table)
 library(lubridate)
 library(paws)
-library(vroom)
+
 
 url <- "https://liquipedia.net"
 
@@ -48,7 +47,7 @@ read_detail <- function(link) {
     birth = l$birth, 
     country = l$country,
     status = l$status,
-    team = l$team,
+    team_name = l$team,
     earnings = l$approx_total_earnings,
     role = l$common_team_role_s,
     signature_hero = l$signature_hero
@@ -61,7 +60,7 @@ read_detail <- function(link) {
 
 
 players_raw <- map_dfr(details_links, read_detail)
-readr::write_csv(players_raw, "players_raw.csv")
+readr::write_csv(players_raw, "scrapers/players_raw.csv")
 
 
 players_clean <- players_raw %>% 
@@ -71,7 +70,7 @@ players_clean <- players_raw %>%
         earnings = readr::parse_number(earnings),
         signature_hero = str_replace_all(signature_hero, "Lúcio", "Lucio") %>% str_replace_all("Torbjörn", "Torbjoirn"))
 
-readr::write_csv(players_clean, "players_clean.csv")
+readr::write_csv(players_clean, "scrapers/players_clean.csv")
 
 s3_client <- s3()
-s3_client$put_object(Body = "players_clean.csv", Bucket = "owl-analysis", Key = "players/players_clean.csv")
+s3_client$put_object(Body = "scrapers/players_clean.csv", Bucket = "owl-analysis", Key = "players/players_clean.csv")

@@ -6,6 +6,8 @@ data-raw/renv/*
 
 .vscode
 
+test.ipynb
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -144,3 +146,4 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+.Rproj.user

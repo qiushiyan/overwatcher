@@ -25,9 +25,8 @@ create_DB <- function() {
               rownames(dt) <- NULL 
               dt
             }, 
-            write_dt = function(dt, table_name, overwrite = TRUE) {
-              rownames(dt) <- NULL
-              dbWriteTable(private$con, table_name, dt, overwrite = overwrite)
+            write_dt = function(dt, table_name, overwrite = TRUE, row.names = FALSE) {
+              dbWriteTable(private$con, table_name, dt, overwrite = overwrite, row.names = row.names)
             },
             query = function(statement) {
               dbGetQuery(private$con, statement)

@@ -1,10 +1,10 @@
-player_name,player_real_name,birth,country,status,team,earnings,role,signature_hero
+player_name,player_real_name,birth,country,status,team_name,earnings,role,signature_hero
 [e][h] Alarm  ,Kim Kyung-bo,"July 21, 2001 (2001-07-21) (age 20)",South Korea,Active,Philadelphia Fusion,"$139,995",Support,"Ana
 Zenyatta
 Baptiste
 Moira
 Brigitte"
-[e][h] Ameng  ,Ding Menghan,"September 29, 1996 (1996-09-29) (age 25)",China,Active,Chengdu Hunters,"$63,364",Tank,"Wrecking Ball
+[e][h] Ameng  ,Ding Menghan,"September 29, 1996 (1996-09-29) (age 25)",China,Active,NA,"$63,364",Tank,"Wrecking Ball
 Orisa
 Reinhardt"
 [e][h] Anamo  ,Jung Tae-sung,"September 2, 1997 (1997-09-02) (age 24)",South Korea,Active,Seoul Dynasty,"$251,179",Support,"Mercy
@@ -15,7 +15,7 @@ Brigitte"
 Ashe
 McCree
 Sombra"
-[e][h] ANSOONJAE  ,An Soon-jae,"February 15, 2002 (2002-02-15) (age 19)",South Korea,Active,Toronto Defiant,"$6,581",Support,"Lúcio
+[e][h] ANSOONJAE  ,An Soon-jae,"February 15, 2002 (2002-02-15) (age 19)",South Korea,Active,NA,"$6,581",Support,"Lúcio
 Brigitte
 Mercy"
 [e][h] Architect  ,Park Min-ho,"February 26, 2000 (2000-02-26) (age 21)",South Korea,Active,Hangzhou Spark,"$269,809",DPS,"Genji
@@ -23,7 +23,7 @@ Pharah
 Doomfist
 Tracer
 Widowmaker"
-[e][h] Aspire  ,Luka Rolovic,NA,United States,Active,Toronto Defiant,"$5,828",DPS,"Tracer
+[e][h] Aspire  ,Luka Rolovic,NA,United States,Active,NA,"$5,828",DPS,"Tracer
 Ashe
 Hanzo
 Widowmaker
@@ -33,7 +33,7 @@ Echo
 Pharah
 Tracer
 Sombra"
-[e][h] Aztac  ,Park Jeong-su,"December 9, 1999 (1999-12-09) (age 21)",South Korea,Active,Toronto Defiant,"$21,965",Support,"Zenyatta
+[e][h] Aztac  ,Park Jeong-su,"December 9, 1999 (1999-12-09) (age 21)",South Korea,Active,NA,"$21,965",Support,"Zenyatta
 Baptiste
 Ana
 Moira"
@@ -55,7 +55,7 @@ Pharah
 Soldier: 76
 Genji
 Hanzo"
-[e][h] BQB  ,Lee Sang-bum,"July 3, 1998 (1998-07-03) (age 23)",South Korea,Active,Florida Mayhem,"$36,011",DPS,"Sombra
+[e][h] BQB  ,Lee Sang-bum,"July 3, 1998 (1998-07-03) (age 23)",South Korea,Active,NA,"$36,011",DPS,"Sombra
 McCree
 Ashe
 Reaper
@@ -69,7 +69,7 @@ Hanzo"
 Winston
 Wrecking Ball
 Orisa"
-[e][h] Checkmate  ,Baek Seung-hun,"May 8, 2001 (2001-05-08) (age 20)",South Korea,Active,Florida Mayhem,"$11,756","DPS
+[e][h] Checkmate  ,Baek Seung-hun,"May 8, 2001 (2001-05-08) (age 20)",South Korea,Active,NA,"$11,756","DPS
 Tank","Genji
 Tracer
 Reaper
@@ -84,7 +84,7 @@ Pharah
 Doomfist
 Echo
 Tracer"
-[e][h] Closer  ,Jung Won-sik,"May 16, 1998 (1998-05-16) (age 23)",South Korea,Active,Washington Justice,"$248,344",Support,"Mercy
+[e][h] Closer  ,Jung Won-sik,"May 16, 1998 (1998-05-16) (age 23)",South Korea,Inactive,NA,"$248,344",Support,"Mercy
 Brigitte
 Lúcio
 Baptiste
@@ -97,7 +97,7 @@ Echo
 Widowmaker
 Hanzo
 Tracer"
-[e][h] Cr0ng  ,Nam Ki-cheol,"October 3, 1998 (1998-10-03) (age 22)",South Korea,Active,Guangzhou Charge,"$47,855",Tank,"Sigma
+[e][h] Cr0ng  ,Nam Ki-cheol,"October 3, 1998 (1998-10-03) (age 23)",South Korea,Active,Guangzhou Charge,"$47,855",Tank,"Sigma
 Zarya
 Roadhog
 D.Va
@@ -105,7 +105,7 @@ Doomfist"
 [e][h] Creative  ,Kim Young-wan,"November 4, 2001 (2001-11-04) (age 19)",South Korea,Active,Seoul Dynasty,"$152,085",Support,"Ana
 Zenyatta
 Baptiste"
-[e][h] Crimzo  ,William Hernandez,"October 3, 1999 (1999-10-03) (age 21)",Canada,Active,Houston Outlaws,"$62,277",Support,"Zenyatta
+[e][h] Crimzo  ,William Hernandez,"October 3, 1999 (1999-10-03) (age 22)",Canada,Active,Houston Outlaws,"$62,277",Support,"Zenyatta
 Moira
 Baptiste
 Ana"
@@ -127,7 +127,7 @@ Widowmaker
 Zarya
 McCree
 Hanzo"
-[e][h] Develop  ,Chae Rak-hoon,"December 16, 2002 (2002-12-16) (age 18)",South Korea,Active,Shanghai Dragons,"$273,713",DPS,"McCree
+[e][h] Develop  ,Chae Rak-hoon,"December 16, 2002 (2002-12-16) (age 18)",South Korea,Active,NA,"$273,713",DPS,"McCree
 Widowmaker
 Tracer
 Ashe"
@@ -232,11 +232,11 @@ Orisa"
 Zarya
 Sigma
 Roadhog"
-[e][h] Gangnamjin  ,Kang Nam-jin,"November 11, 1998 (1998-11-11) (age 22)",South Korea,Active,Florida Mayhem,"$58,781",Support,"Zenyatta
+[e][h] Gangnamjin  ,Kang Nam-jin,"November 11, 1998 (1998-11-11) (age 22)",South Korea,Active,NA,"$58,781",Support,"Zenyatta
 Baptiste
 Ana
 Moira"
-[e][h] Gargoyle  ,Lee Beom-jun,"November 4, 1998 (1998-11-04) (age 22)",South Korea,Active,Florida Mayhem,"$30,824",Tank,"Zarya
+[e][h] Gargoyle  ,Lee Beom-jun,"November 4, 1998 (1998-11-04) (age 22)",South Korea,Active,NA,"$30,824",Tank,"Zarya
 D.Va
 Roadhog
 Sigma"
@@ -316,7 +316,7 @@ Genji
 Soldier: 76
 Brigitte
 Pharah"
-[e][h] Jecse  ,Lee Seung-soo,"May 31, 1999 (1999-05-31) (age 22)",South Korea,Active,Dallas Fuel,"$158,826",Support,"Lúcio
+[e][h] Jecse  ,Lee Seung-soo,"May 31, 1999 (1999-05-31) (age 22)",South Korea,Active,NA,"$158,826",Support,"Lúcio
 Mercy
 Brigitte"
 [e][h] Jerry  ,Min Tae-hee,"July 5, 2001 (2001-07-05) (age 20)",South Korea,Active,Washington Justice,"$12,031",DPS,"McCree
@@ -336,7 +336,7 @@ Pharah
 Hanzo
 Doomfist
 Torbjörn"
-[e][h] JJANGGU  ,Cho Myung-heum,"August 26, 2000 (2000-08-26) (age 21)",South Korea,Active,Houston Outlaws,"$15,521","Tank
+[e][h] JJANGGU  ,Cho Myung-heum,"August 26, 2000 (2000-08-26) (age 21)",South Korea,Active,NA,"$15,521","Tank
 DPS","Reinhardt
 Wrecking Ball
 Winston
@@ -345,7 +345,7 @@ Orisa"
 Ana
 Moira
 Baptiste"
-[e][h] Joobi  ,Enrique Triana,"April 4, 2003 (2003-04-04) (age 18)",United States,Active,Houston Outlaws,"$9,113",Support,"Lúcio
+[e][h] Joobi  ,Enrique Triana,"April 4, 2003 (2003-04-04) (age 18)",United States,Active,NA,"$9,113",Support,"Lúcio
 Mercy
 Baptiste
 Brigitte"
@@ -376,7 +376,7 @@ McCree
 Pharah
 Widowmaker
 Mei"
-[e][h] Lastro  ,Mun Jung-won,"April 2, 2001 (2001-04-02) (age 20)",South Korea,Active,Toronto Defiant,"$26,685",Support,"Zenyatta
+[e][h] Lastro  ,Mun Jung-won,"April 2, 2001 (2001-04-02) (age 20)",South Korea,Active,NA,"$26,685",Support,"Zenyatta
 Ana
 Moira
 Baptiste"
@@ -392,7 +392,7 @@ Echo"
 Mercy
 Brigitte"
 [e][h] LiGe  ,Jia Chengjie,"September 6, 2001 (2001-09-06) (age 20)",China,Active,"Hangzhou Spark
-Bilibili Gaming","$32,000",Tank,"Sigma
+Bilibili Gaming","$35,333",Tank,"Sigma
 D.Va
 Zarya"
 [e][h] LiNkzr  ,Jiri Masalin,"April 9, 1994 (1994-04-09) (age 27)",Finland,Active,Vancouver Titans,"$43,065",DPS,"Widowmaker
@@ -405,7 +405,7 @@ McCree
 Hanzo
 Ashe
 Tracer"
-[e][h] Logix  ,Andreas Berghmans,"June 11, 1997 (1997-06-11) (age 24)",Belgium,Active,Toronto Defiant,"$20,555",DPS,"Tracer
+[e][h] Logix  ,Andreas Berghmans,"June 11, 1997 (1997-06-11) (age 24)",Belgium,Active,NA,"$20,555",DPS,"Tracer
 Widowmaker
 McCree
 Ashe
@@ -421,7 +421,7 @@ Roadhog"
 [e][h] Mandu  ,Kim Chan-hee,"June 3, 2002 (2002-06-03) (age 19)",South Korea,Active,Guangzhou Charge,"$66,201",Support,"Lúcio
 Mercy
 Baptiste"
-[e][h] Mano  ,Kim Dong-gyu,"April 12, 1996 (1996-04-12) (age 25)",South Korea,Active,Philadelphia Fusion,"$267,273",Tank,"Winston
+[e][h] Mano  ,Kim Dong-gyu,"April 12, 1996 (1996-04-12) (age 25)",South Korea,Inactive,NA,"$267,273",Tank,"Winston
 Reinhardt
 Orisa
 Wrecking Ball"
@@ -433,12 +433,12 @@ Orisa"
 [e][h] Masaa  ,Petja Kantanen,"July 18, 1995 (1995-07-18) (age 26)",Finland,Active,Atlanta Reign,"$210,126",Support,"Lúcio
 Mercy
 Brigitte"
-[e][h] Michelle  ,Choi Min-hyuk,"December 21, 1999 (1999-12-21) (age 21)",South Korea,Active,Toronto Defiant,"$209,947",Tank,"D.Va
+[e][h] Michelle  ,Choi Min-hyuk,"December 21, 1999 (1999-12-21) (age 21)",South Korea,Active,NA,"$209,947",Tank,"D.Va
 Zarya
 Roadhog
 Sombra"
 [e][h] MirroR  ,"Gia Huy ""Chris"" Trịnh","October 14, 2001 (2001-10-14) (age 19)","Vietnam
-Latvia",Active,Los Angeles Gladiators,"$67,814",DPS,"Doomfist
+Latvia",Active,NA,"$67,814",DPS,"Doomfist
 Zarya
 Torbjörn
 Genji
@@ -466,7 +466,7 @@ Mercy
 Ana
 Baptiste
 Brigitte"
-[e][h] MuZe  ,Kim Young-hun,"September 16, 2002 (2002-09-16) (age 19)",South Korea,Active,Los Angeles Gladiators,"$75,497",Tank,"Winston
+[e][h] MuZe  ,Kim Young-hun,"September 16, 2002 (2002-09-16) (age 19)",South Korea,Active,NA,"$75,497",Tank,"Winston
 Wrecking Ball
 Reinhardt
 Orisa"
@@ -479,7 +479,7 @@ Echo"
 [e][h] Myunb0ng  ,Seo Sang-min,"June 12, 1999 (1999-06-12) (age 22)",South Korea,Active,Boston Uprising,"$35,791",Support,"Zenyatta
 Ana
 Moira"
-[e][h] Na1st  ,Lee Ho-sung,"January 20, 2003 (2003-01-20) (age 18)",South Korea,Active,Toronto Defiant,"$37,568",DPS,"Genji
+[e][h] Na1st  ,Lee Ho-sung,"January 20, 2003 (2003-01-20) (age 18)",South Korea,Active,NA,"$37,568",DPS,"Genji
 Tracer
 Mei
 Echo
@@ -500,24 +500,24 @@ Brigitte"
 [e][h] NvM  ,Wen Yelin,"December 24, 1997 (1997-12-24) (age 23)",China,Active,Los Angeles Valiant,"$7,951",Tank,"Winston
 Reinhardt
 Orisa"
-[e][h] OGE  ,Son Min-seok,"October 15, 1999 (1999-10-15) (age 21)",South Korea,Active,Florida Mayhem,"$33,716",Tank,"Winston
+[e][h] OGE  ,Son Min-seok,"October 15, 1999 (1999-10-15) (age 21)",South Korea,Active,NA,"$33,716",Tank,"Winston
 Reinhardt
 Wrecking Ball
 Orisa"
-[e][h] Onigod  ,Stefan Fiskerstrand,"July 29, 1997 (1997-07-29) (age 24)",Norway,Active,Paris Eternal,"$46,024",DPS,"Tracer
+[e][h] Onigod  ,Stefan Fiskerstrand,"July 29, 1997 (1997-07-29) (age 24)",Norway,Active,NA,"$46,024",DPS,"Tracer
 McCree
 Widowmaker
 Soldier: 76
 Ashe"
 [e][h] Pelican  ,Oh Se-hyun,"July 5, 2002 (2002-07-05) (age 19)",South Korea,Active,Atlanta Reign,"$160,811",DPS,"Echo
 Sombra
+Mei
 Genji
-Hanzo
-Mei"
+Tracer"
 [e][h] PIGGY  ,Shin Min-jun,"November 19, 1999 (1999-11-19) (age 21)",South Korea,Active,Houston Outlaws,"$28,619",Tank,"Zarya
 D.Va
 Sigma"
-[e][h] Pine  ,Kim Do-hyeon,"August 15, 1997 (1997-08-15) (age 24)",South Korea,Active,Dallas Fuel,"$279,149",DPS,"McCree
+[e][h] Pine  ,Kim Do-hyeon,"August 15, 1997 (1997-08-15) (age 24)",South Korea,Active,NA,"$279,149",DPS,"McCree
 Widowmaker
 Ashe
 Junkrat
@@ -536,7 +536,7 @@ United States",Active,Boston Uprising,"$17,268",Tank,"Sigma
 D.Va
 Zarya
 Roadhog"
-[e][h] Rapel  ,Kim Jun-keun,"March 30, 1998 (1998-03-30) (age 23)",South Korea,Active,Dallas Fuel,"$258,708",Support,"Zenyatta
+[e][h] Rapel  ,Kim Jun-keun,"March 30, 1998 (1998-03-30) (age 23)",South Korea,Retired,NA,"$258,708",Support,"Zenyatta
 Ana
 Moira
 Baptiste"
@@ -556,7 +556,7 @@ Ana
 Baptiste"
 [e][h] Roolf  ,Randal Stark,"April 4, 1995 (1995-04-04) (age 26)",Canada,Active,Vancouver Titans,"$33,909",Support,"Zenyatta
 Ana"
-[e][h] SADO  ,Kim Su-min,"January 15, 1999 (1999-01-15) (age 22)",South Korea,Active,Toronto Defiant,"$163,333",Tank,"Winston
+[e][h] SADO  ,Kim Su-min,"January 15, 1999 (1999-01-15) (age 22)",South Korea,Active,NA,"$163,333",Tank,"Winston
 Reinhardt
 Orisa
 Wrecking Ball"
@@ -607,7 +607,7 @@ Orisa"
 Brigitte
 Baptiste
 Ana"
-[e][h] SLIME  ,Kim Sung-jun,"January 12, 2000 (2000-01-12) (age 21)",South Korea,Active,Florida Mayhem,"$309,450",Support,"Lúcio
+[e][h] SLIME  ,Kim Sung-jun,"January 12, 2000 (2000-01-12) (age 21)",South Korea,Active,NA,"$309,450",Support,"Lúcio
 Baptiste
 Mercy
 Brigitte"
@@ -662,10 +662,10 @@ Brigitte"
 [e][h] Toyou  ,Lim Hyeon-woo,"June 27, 2001 (2001-06-27) (age 20)",South Korea,Active,Seoul Dynasty,"$135,865",Tank,"D.Va
 Sigma
 Zarya"
-[e][h] Tsuna  ,Samir Ikram,"August 31, 2001 (2001-08-31) (age 20)",France,Active,Paris Eternal,"$17,696",DPS,"Tracer
+[e][h] Tsuna  ,Samir Ikram,"August 31, 2001 (2001-08-31) (age 20)",France,Active,NA,"$17,696",DPS,"Tracer
 Zarya
 Widowmaker"
-[e][h] TTuba  ,Lee Ho-sung,"September 21, 1999 (1999-09-21) (age 22)",South Korea,Active,Washington Justice,"$64,925",DPS,"Pharah
+[e][h] TTuba  ,Lee Ho-sung,"September 21, 1999 (1999-09-21) (age 22)",South Korea,Active,NA,"$64,925",DPS,"Pharah
 Genji
 Tracer
 Doomfist
@@ -680,13 +680,13 @@ Pharah
 Genji
 Echo
 Mei"
-[e][h] Vestola  ,Ilari Vestola,NA,Finland,Active,Paris Eternal,"$12,381",Tank,"D.Va
+[e][h] Vestola  ,Ilari Vestola,NA,Finland,Active,NA,"$12,381",Tank,"D.Va
 Sigma"
 [e][h] Viol2t  ,Park Min-ki,"April 17, 2000 (2000-04-17) (age 21)",South Korea,Active,San Francisco Shock,"$585,697",Support,"Zenyatta
 Baptiste
 Moira
 Ana"
-[e][h] Void  ,Kang Jun-woo,"October 2, 1996 (1996-10-02) (age 24)",South Korea,Active,Shanghai Dragons,"$511,008",Tank,"Sigma
+[e][h] Void  ,Kang Jun-woo,"October 2, 1996 (1996-10-02) (age 25)",South Korea,Active,Shanghai Dragons,"$511,008",Tank,"Sigma
 D.Va
 Zarya
 Roadhog"

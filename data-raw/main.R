@@ -20,3 +20,8 @@ db$write_dt(data$player_info, "player_info")
 db$write_dt(data$player_stats, "player_stats")
 db$write_dt(data$maps, "maps")
 db$write_dt(data$matches, "matches")
+
+
+db$query("ALTER TABLE player_info MODIFY COLUMN birth DATE")
+db$query("ALTER TABLE matches MODIFY COLUMN date DATE")
+db$query("ALTER TABLE maps MODIFY COLUMN match_date DATE")
