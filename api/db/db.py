@@ -1,3 +1,4 @@
+from datetime import date
 import sqlalchemy
 import pandas as pd
 from typing import Dict, List
@@ -86,26 +87,85 @@ class Database:
         return df
 
     @safely
-    def fetch_player_stat_all():
-        pass
-
-    @safely
-    def fetch_player_stat(self, name: str, select_cols: List[str], stat: List[str], hero: List[str], map_: List[str], skip: int, limit: int):
+    def fetch_player_stats(self, name: str, select_cols: List[str], stats: List[str], heroes: List[str], maps: List[str]):
         conditions = [{"player_name": {"eq": name}}]
-        if stat is not None:
+        if stats is not None:
             conditions.append({
-                "stat_name": {"in": stat},
+                "stat_name": {"in": stats},
             })
-        if hero is not None:
+        if heroes is not None:
             conditions.append({
-                "hero_name": {"in": hero},
+                "hero_name": {"in": heroes},
             })
-        if map_ is not None:
+        if maps is not None:
             conditions.append({
-                "map_name": {"in": map_}
+                "map_name": {"in": maps}
             })
 
         sql = self.compose_sql(from_table="player_stats",
+                               select_cols=select_cols,
+                               conditions=conditions)
+        df = pd.read_sql(sql, self.__con).fillna("")
+        return df
+
+    @safely
+    def fetch_player_stats_all(self,  select_cols: List[str], stats: List[str], heroes: List[str], maps: List[str]):
+        conditions = []
+        if stats is not None:
+            conditions.append({
+                "stat_name": {"in": stats},
+            })
+        if heroes is not None:
+            conditions.append({
+                "hero_name": {"in": heroes},
+            })
+        if maps is not None:
+            conditions.append({
+                "map_name": {"in": maps}
+            })
+        sql = self.compose_sql(from_table="player_stats",
+                               select_cols=select_cols,
+                               conditions=conditions)
+        df = pd.read_sql(sql, self.__con)
+        return df
+
+    @safely
+    def fetch_matches(self, select_cols: List[str], player_names: List[str], date: date, min_date: date, max_date: date, team_names: List[str], stats: List[str], heroes: List[str], maps: List[str], skip: int, limit: int):
+        conditions = []
+        if player_names is not None:
+            conditions.append({
+                "player_name": {"in": player_names}
+            })
+        if date is not None:
+            conditions.append({
+                "date": {"eq": date}
+            })
+        if min_date is not None:
+            conditions.append({
+                "date": {"ge": min_date}
+            })
+        if max_date is not None:
+            conditions.append({
+                "date": {"le": max_date}
+            })
+        if team_names is not None:
+            conditions.append({
+                "team_name": {"in": team_names}
+            })
+        if stats is not None:
+            conditions.append({
+                "stat_name": {"in": stats}
+            })
+        if heroes is not None:
+            conditions.append({
+                "hero_name": {"in": heroes}
+            })
+        if maps is not None:
+            conditions.append({
+                "map_name": {"in": maps}
+            })
+
+        sql = self.compose_sql(from_table="matches",
                                select_cols=select_cols,
                                conditions=conditions,
                                skip=skip,

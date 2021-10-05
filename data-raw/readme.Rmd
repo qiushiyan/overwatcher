@@ -20,13 +20,14 @@ db <- DB$new()
 ```
 
 ```{r}
-player_stats <- as.data.table(db$query("select distinct stat_name, hero_name, map_name from player_stats"))
+player_stats <- as.data.table(db$query("select distinct player_name, stat_name, hero_name, map_name from player_stats"))
 ```
 
 ```{r}
-stats <- player_stats[, .N, stat_name][order(-N)]$stat_name
+stats <- player_stats[, .N, stat_name][order(stat_name)]$stat_name
 heroes <- player_stats[, .N, hero_name][order(hero_name)]$hero_name
 maps <- player_stats[, .N, map_name][order(map_name)]$map_name
+players <- player_stats[, .N, player_name][order(player_name)]$player_name
 ```
 
 
@@ -62,22 +63,22 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-Below is a list of all available values for heroes, maps and stats. Note that all values should be lowercase.
+Below is a list of all available values ordered alphabetically for some query parameters. Note that all values should be lowercase.
 
 ### heroes
-
-(ordered alphabetically)
-
 
 `r knitr::combine_words(heroes, sep = '\n', and = '', before = '- \x60', after = '\x60')`
 
 # maps 
-(ordered alphabetically)
 
 `r knitr::combine_words(maps, sep = '\n', and = '', before = '- \x60', after = '\x60')`
 
 ##  stats
 
-(ordered by occurrences)
 
 `r knitr::combine_words(stats, sep = '\n', and = '', before = '- \x60', after = '\x60')`
+
+# players 
+
+
+`r knitr::combine_words(players, sep = '\n', and = '', before = '- \x60', after = '\x60')`

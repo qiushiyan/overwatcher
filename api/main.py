@@ -3,7 +3,8 @@ import uvicorn
 from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.staticfiles import StaticFiles
 from player_info import app_player_info
-from player_stat import app_player_stat
+from player_stat import app_player_stats
+from matches import app_matches
 from db.db_session import db
 from config import Settings
 
@@ -39,11 +40,15 @@ def overridden_swagger():
                                swagger_js_url="/static/swagger-ui-bundle.js")
 
 
-app.include_router(app_player_stat, prefix="/player_stat",
-                   tags=["average match statistics of players (season 4)"])
-
 app.include_router(app_player_info, prefix="/player_info",
-                   tags=["personal information of players"])
+                   tags=["player personal information"])
+
+app.include_router(app_player_stats, prefix="/player_stats",
+                   tags=["average player statistics"])
+
+app.include_router(app_matches, prefix="/matches",
+                   tags=["per match player statistics"])
+
 if __name__ == '__main__':
     uvicorn.run('main:app', host='0.0.0.0', port=8000,
                 reload=True, debug=True, workers=1)

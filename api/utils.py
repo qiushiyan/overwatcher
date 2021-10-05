@@ -35,10 +35,10 @@ def gen_response(res):
             }
         else:
             return {
-                "error_code": -1,
-                "msg": "error",
+                "error_code": 1,
+                "msg": "success (empty df)",
                 "data": "",
-                "error": "data not found"
+                "error": ""
             }
     else:
         return {

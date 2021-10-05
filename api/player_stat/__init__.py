@@ -1,1 +1,1 @@
-from .app import app_player_stat
+from .app import app_player_stats

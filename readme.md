@@ -41,12 +41,10 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-Below is a list of all available values for heroes, maps and stats. Note
-that all values should be lowercase.
+Below is a list of all available values ordered alphabetically for some
+query parameters. Note that all values should be lowercase.
 
 ### heroes
-
-(ordered alphabetically)
 
 -   `all heroes`
 -   `ana`
@@ -84,8 +82,6 @@ that all values should be lowercase.
 
 # maps
 
-(ordered alphabetically)
-
 -   `blizzard world`
 -   `busan`
 -   `dorado`
@@ -108,100 +104,247 @@ that all values should be lowercase.
 
 ## stats
 
-(ordered by occurrences)
-
--   `time alive`
--   `time building ultimate`
--   `time played`
--   `time elapsed per ultimate earned`
--   `ultimates earned - fractional`
--   `average time alive`
--   `damage taken`
+-   `ability damage done`
+-   `accretion kills`
+-   `accretion stuns`
+-   `adaptive shield uses`
+-   `air uptime`
+-   `air uptime percentage`
 -   `all damage done`
--   `hero damage done`
--   `barrier damage done`
--   `deaths`
--   `eliminations`
--   `final blows`
--   `objective time`
+-   `amped heal activations`
+-   `amped speed activations`
+-   `amplification matrix assists`
+-   `amplification matrix casts`
+-   `amplification matrix efficiency`
+-   `armor - rally`
+-   `armor provided`
 -   `assists`
--   `healing received`
--   `time holding ultimate`
--   `objective kills`
--   `ultimates used`
--   `quick melee ticks`
--   `damage - quick melee`
--   `shots fired`
--   `weapon accuracy`
--   `quick melee accuracy`
--   `quick melee hits`
--   `shots missed`
--   `solo kills`
--   `shots hit`
--   `time hacked`
--   `time discorded`
--   `multikills`
--   `melee final blows`
--   `turrets destroyed`
--   `critical hit kills`
--   `critical hit accuracy`
--   `critical hits`
--   `damage - weapon`
--   `environmental deaths`
--   `offensive assists`
--   `self healing`
--   `self healing percent of damage taken`
--   `knockback kills`
--   `defensive assists`
--   `damage blocked`
--   `damage - weapon primary`
--   `healing done`
--   `environmental kills`
--   `damage - weapon secondary`
--   `players knocked back`
--   `scoped shots`
--   `damage amplified`
--   `damage - weapon scoped`
--   `scoped accuracy`
--   `scoped hits`
--   `recon assists`
--   `healing - weapon`
--   `healing amplified`
--   `primary fire ticks`
--   `secondary fire accuracy`
--   `primary fire accuracy`
--   `primary fire hits`
--   `scoped critical hit accuracy`
--   `scoped critical hits`
--   `infra-sight efficiency`
--   `scoped critical hit kills`
--   `ultimates negated`
--   `damage done`
--   `damage - sticky bombs`
--   `sticky bombs direct hit accuracy`
--   `sticky bombs direct hits`
--   `sticky bombs useds`
--   `damage - emp`
--   `emp efficiency`
--   `enemies emp'd`
--   `enemies hacked`
+-   `average energy`
 -   `average players per teleporter`
--   `players teleported`
--   `teleporter uptime`
--   `teleporters placed`
--   `melee percentage of final blows`
+-   `average time alive`
+-   `barrage efficiency`
+-   `barrage kills`
+-   `barrier damage done`
+-   `biotic field healing done`
+-   `biotic fields deployed`
+-   `biotic grenade kills`
+-   `biotic launcher healing explosions`
+-   `biotic launcher healing shots`
+-   `biotic orb damage efficiency`
+-   `biotic orb healing efficiency`
+-   `biotic orb maximum damage`
+-   `biotic orb maximum healing`
+-   `blaster kills`
+-   `blizzard efficiency`
+-   `blizzard kills`
+-   `bob gun damage`
+-   `bob kills`
+-   `charge kills`
+-   `coach gun kills`
+-   `coalescence healing`
+-   `coalescence kills`
+-   `coalesence - damage per use`
+-   `coalesence - healing per use`
+-   `concussion mine kills`
+-   `critical hit accuracy`
+-   `critical hit kills`
+-   `critical hits`
+-   `damage - accretion`
+-   `damage - barrage`
+-   `damage - biotic grenade`
+-   `damage - biotic orb`
+-   `damage - blizzard`
+-   `damage - bob`
+-   `damage - bob charge`
+-   `damage - boosters`
+-   `damage - call mech`
+-   `damage - chain hook`
+-   `damage - charge`
+-   `damage - coach gun`
+-   `damage - coalescence`
+-   `damage - concussion mine`
+-   `damage - deadeye`
+-   `damage - death blossom`
+-   `damage - deflect`
+-   `damage - discord orb`
+-   `damage - dragonblade`
+-   `damage - dragonblade total`
+-   `damage - dragonstrike`
+-   `damage - duplicate`
+-   `damage - dynamite`
+-   `damage - earthshatter`
+-   `damage - emp`
 -   `damage - fire strike`
--   `rocket hammer melee accuracy`
--   `rocket hammer melee average targets`
--   `rocket hammer melee hits`
--   `rocket hammer melee hits - multiple`
--   `rocket hammer melee ticks`
+-   `damage - flashbang`
+-   `damage - focusing beam`
+-   `damage - focusing beam - bonus damage only`
+-   `damage - grappling claw`
+-   `damage - graviton surge`
+-   `damage - helix rockets`
+-   `damage - hyperspheres`
 -   `damage - jump pack`
+-   `damage - meteor strike`
+-   `damage - micro missiles`
+-   `damage - minefield`
+-   `damage - molten core`
+-   `damage - piledriver`
+-   `damage - pistol`
 -   `damage - primal rage leap`
 -   `damage - primal rage melee`
 -   `damage - primal rage total`
+-   `damage - pulse bomb`
+-   `damage - quick melee`
+-   `damage - rip-tire`
+-   `damage - rising uppercut`
+-   `damage - rocket punch`
+-   `damage - seismic slam`
+-   `damage - self destruct`
+-   `damage - sentry turret`
+-   `damage - shield bash`
+-   `damage - sonic`
+-   `damage - steel trap`
+-   `damage - sticky bombs`
+-   `damage - storm arrows`
+-   `damage - swift strike`
+-   `damage - swift strike dragonblade`
+-   `damage - tactical visor`
+-   `damage - total mayhem`
+-   `damage - venom mine`
+-   `damage - weapon`
+-   `damage - weapon charged`
+-   `damage - weapon hammer`
+-   `damage - weapon pistol`
+-   `damage - weapon primary`
+-   `damage - weapon recon`
+-   `damage - weapon scoped`
+-   `damage - weapon secondary`
+-   `damage - weapon sentry`
+-   `damage - weapon tank`
+-   `damage - whole hog`
+-   `damage absorbed`
+-   `damage amplified`
+-   `damage blocked`
+-   `damage done`
+-   `damage prevented`
+-   `damage reflected`
+-   `damage taken`
+-   `damage taken - adaptive shield`
+-   `damage taken - ball`
+-   `damage taken - tank`
+-   `deadeye efficiency`
+-   `deadeye kills`
+-   `death blossom efficiency`
+-   `death blossom kills`
+-   `death blossoms`
+-   `deaths`
+-   `defensive assists`
+-   `deflection kills`
+-   `direct hit accuracy`
+-   `discord orb time`
+-   `dragonblade efficiency`
+-   `dragonblade kills`
+-   `dragonblades`
+-   `dragonstrike efficiency`
+-   `dragonstrike kills`
+-   `duplicate kills`
+-   `dynamite kills`
+-   `earthshatter efficiency`
+-   `earthshatter kills`
+-   `earthshatter stuns`
+-   `eliminations`
+-   `emp efficiency`
+-   `enemies emp'd`
+-   `enemies frozen`
+-   `enemies hacked`
+-   `enemies hooked`
+-   `enemies slept`
+-   `enemies trapped`
+-   `energy maximum`
+-   `environmental deaths`
+-   `environmental kills`
+-   `fan the hammer kills`
+-   `final blows`
+-   `fire strike kills`
+-   `focusing beam accuracy`
+-   `focusing beam dealing damage seconds`
+-   `focusing beam kills`
+-   `focusing beam seconds`
+-   `frag launcher direct hits`
+-   `freeze spray damage`
+-   `grappling claw impacts`
+-   `grappling claw kills`
+-   `grappling claw uses`
+-   `gravitic flux damage done`
+-   `gravitic flux kills`
+-   `graviton surge efficiency`
+-   `graviton surge kills`
+-   `hammer kills`
+-   `harmony orb time`
+-   `heal song time elapsed`
+-   `healing - biotic grenade`
+-   `healing - biotic launcher`
+-   `healing - biotic orb`
+-   `healing - coalescence`
+-   `healing - harmony orb`
+-   `healing - healing boost`
+-   `healing - healing boost amped`
+-   `healing - immortality field`
+-   `healing - inspire`
+-   `healing - regenerative burst`
+-   `healing - repair pack`
+-   `healing - secondary fire`
+-   `healing - transcendence`
+-   `healing - weapon`
+-   `healing - weapon scoped`
+-   `healing - weapon valkyrie`
+-   `healing accuracy`
+-   `healing amplified`
+-   `healing done`
+-   `healing received`
+-   `health recovered`
+-   `helix rocket kills`
+-   `hero damage done`
+-   `high energy kills`
+-   `hook accuracy`
+-   `hooks attempted`
+-   `hyperspheres direct hits`
+-   `icicle damage`
+-   `immortality field deaths prevented`
+-   `infra-sight efficiency`
+-   `infra-sight uptime`
+-   `inspire uptime`
+-   `inspire uptime percentage`
 -   `jump pack kills`
+-   `knockback kills`
+-   `lifetime energy accumulation`
+-   `match blinks used`
+-   `mech deaths`
+-   `mechs called`
+-   `melee final blows`
 -   `melee kills`
+-   `melee percentage of final blows`
+-   `meteor strike efficiency`
+-   `meteor strike kills`
+-   `minefield kills`
+-   `molten core efficiency`
+-   `molten core kills`
+-   `multikills`
+-   `nano boost assists`
+-   `nano boost efficiency`
+-   `nano boosts applied`
+-   `objective kills`
+-   `objective time`
+-   `of rockets fired`
+-   `offensive assists`
+-   `overload kills`
+-   `photon projector kills`
+-   `piledriver kills`
+-   `piledriver uses`
+-   `players halted`
+-   `players knocked back`
+-   `players resurrected`
+-   `players saved`
+-   `players teleported`
 -   `primal rage efficiency`
 -   `primal rage kills`
 -   `primal rage melee accuracy`
@@ -209,262 +352,290 @@ that all values should be lowercase.
 -   `primal rage melee hits`
 -   `primal rage melee hits - multiple`
 -   `primal rage melee ticks`
--   `tesla cannon accuracy`
--   `tesla cannon efficiency`
--   `tesla cannon hits`
--   `tesla cannon hits - multiple`
--   `tesla cannon ticks`
--   `weapon kills`
--   `grappling claw uses`
+-   `primary fire accuracy`
+-   `primary fire average level`
+-   `primary fire hits`
+-   `primary fire hits hits - level`
+-   `primary fire ticks`
+-   `projected barrier damage blocked`
+-   `projected barriers applied`
+-   `pulse bomb attach rate`
+-   `pulse bomb efficiency`
+-   `pulse bomb kills`
+-   `pulse bombs attached`
+-   `quick melee accuracy`
+-   `quick melee hits`
+-   `quick melee ticks`
+-   `rally armor efficiency`
+-   `recalls used`
+-   `recon assists`
+-   `recon kills`
+-   `rip-tire efficiency`
+-   `rip-tire kills`
+-   `rocket barrages`
+-   `rocket direct hits`
+-   `rocket hammer melee accuracy`
+-   `rocket hammer melee average targets`
+-   `rocket hammer melee hits`
+-   `rocket hammer melee hits - multiple`
+-   `rocket hammer melee ticks`
 -   `roll uptime`
 -   `roll uptime percentage`
 -   `roll uses`
--   `biotic grenade kills`
--   `damage - biotic grenade`
--   `healing - biotic grenade`
--   `healing - weapon scoped`
--   `nano boost assists`
--   `nano boost efficiency`
--   `nano boosts applied`
--   `sleep dart shots`
--   `unscoped accuracy`
--   `unscoped hits`
--   `unscoped shots`
--   `amplification matrix casts`
--   `biotic launcher healing explosions`
--   `biotic launcher healing shots`
--   `damage prevented`
--   `healing - biotic launcher`
--   `healing - regenerative burst`
--   `healing accuracy`
--   `biotic orb damage efficiency`
--   `biotic orb healing efficiency`
--   `biotic orb maximum damage`
--   `biotic orb maximum healing`
--   `coalescence healing`
--   `coalescence kills`
--   `coalesence - damage per use`
--   `coalesence - healing per use`
--   `damage - biotic orb`
--   `damage - coalescence`
--   `healing - biotic orb`
--   `healing - coalescence`
--   `healing - secondary fire`
+-   `scoped accuracy`
+-   `scoped critical hit accuracy`
+-   `scoped critical hit kills`
+-   `scoped critical hits`
+-   `scoped hits`
+-   `scoped shots`
+-   `secondary direct hits`
+-   `secondary fire accuracy`
 -   `secondary fire hits`
 -   `secondary fire ticks`
--   `damage - boosters`
--   `damage - micro missiles`
--   `damage - pistol`
--   `mech deaths`
--   `mechs called`
+-   `self destruct efficiency`
+-   `self healing`
+-   `self healing percent of damage taken`
+-   `self-destruct kills`
 -   `self-destructs`
--   `armor - rally`
--   `armor provided`
--   `damage - shield bash`
--   `healing - inspire`
--   `healing - repair pack`
--   `inspire uptime`
--   `inspire uptime percentage`
--   `rally armor efficiency`
--   `amped heal activations`
--   `amped speed activations`
--   `heal song time elapsed`
--   `healing - healing boost`
--   `healing - healing boost amped`
+-   `sentry kills`
+-   `sentry turret kills`
+-   `shielding - adaptive shield`
+-   `shields created`
+-   `shots fired`
+-   `shots hit`
+-   `shots missed`
+-   `sleep dart hits`
+-   `sleep dart shots`
+-   `sleep dart success rate`
+-   `solo kills`
 -   `sound barrier casts`
 -   `sound barrier efficiency`
 -   `sound barriers provided`
 -   `soundwave kills`
 -   `speed song time elapsed`
--   `ability damage done`
--   `damage - rising uppercut`
--   `damage - rocket punch`
--   `damage - seismic slam`
--   `shields created`
--   `damage - pulse bomb`
--   `health recovered`
--   `match blinks used`
--   `pulse bomb attach rate`
--   `pulse bomb efficiency`
--   `pulse bomb kills`
--   `pulse bombs attached`
--   `recalls used`
--   `enemies slept`
--   `sleep dart hits`
--   `sleep dart success rate`
--   `healing - immortality field`
--   `damage - discord orb`
--   `damage - weapon charged`
--   `discord orb time`
--   `harmony orb time`
--   `healing - harmony orb`
--   `healing - transcendence`
+-   `sticky bombs direct hit accuracy`
+-   `sticky bombs direct hits`
+-   `sticky bombs kills`
+-   `sticky bombs useds`
+-   `storm arrow kills`
+-   `successful freezes`
+-   `supercharger assists`
+-   `supercharger efficiency`
+-   `tactical visor efficiency`
+-   `tactical visor kills`
+-   `tactical visors`
+-   `tank efficiency`
+-   `tank kills`
+-   `teleporter pads destroyed`
+-   `teleporter uptime`
+-   `teleporters placed`
+-   `tesla cannon accuracy`
+-   `tesla cannon efficiency`
+-   `tesla cannon hits`
+-   `tesla cannon hits - multiple`
+-   `tesla cannon ticks`
+-   `time alive`
+-   `time building ultimate`
+-   `time discorded`
+-   `time elapsed per ultimate earned`
+-   `time hacked`
+-   `time holding ultimate`
+-   `time played`
+-   `torbj`
+-   `total mayhem kills`
+-   `total time frozen`
 -   `transcendence efficiency`
 -   `transcendence healing`
 -   `transcendence percent of healing`
--   `damage - duplicate`
--   `damage - focusing beam`
--   `damage - focusing beam - bonus damage only`
--   `duplicate kills`
--   `focusing beam accuracy`
--   `focusing beam dealing damage seconds`
--   `focusing beam kills`
--   `focusing beam seconds`
--   `sticky bombs kills`
--   `damage - coach gun`
--   `damage - dynamite`
--   `damage - deadeye`
--   `damage - flashbang`
--   `deadeye efficiency`
--   `deadeye kills`
--   `fan the hammer kills`
--   `adaptive shield uses`
--   `air uptime`
--   `air uptime percentage`
--   `damage - grappling claw`
--   `damage - minefield`
--   `damage - piledriver`
--   `damage taken - adaptive shield`
--   `damage taken - ball`
--   `damage taken - tank`
--   `grappling claw impacts`
--   `grappling claw kills`
--   `minefield kills`
--   `piledriver kills`
--   `piledriver uses`
--   `shielding - adaptive shield`
--   `damage - self destruct`
--   `accretion kills`
--   `accretion stuns`
--   `damage - accretion`
--   `damage - hyperspheres`
--   `damage absorbed`
--   `gravitic flux damage done`
--   `gravitic flux kills`
--   `hyperspheres direct hits`
--   `damage - dragonstrike`
--   `damage - storm arrows`
--   `storm arrow kills`
--   `average energy`
--   `damage - graviton surge`
--   `energy maximum`
--   `graviton surge efficiency`
--   `graviton surge kills`
--   `high energy kills`
--   `lifetime energy accumulation`
--   `projected barrier damage blocked`
--   `projected barriers applied`
--   `amplification matrix assists`
--   `amplification matrix efficiency`
--   `immortality field deaths prevented`
--   `self destruct efficiency`
--   `self-destruct kills`
--   `players halted`
--   `supercharger assists`
--   `supercharger efficiency`
--   `damage - deflect`
--   `damage - dragonblade`
--   `damage - dragonblade total`
--   `damage - swift strike`
--   `damage - swift strike dragonblade`
--   `damage reflected`
--   `dragonblade efficiency`
--   `dragonblade kills`
--   `dragonblades`
--   `damage - call mech`
--   `healing - weapon valkyrie`
--   `players resurrected`
--   `players saved`
--   `valkyrie healing efficiency`
--   `blaster kills`
--   `damage - weapon pistol`
--   `damage - blizzard`
--   `freeze spray damage`
--   `icicle damage`
--   `damage - charge`
--   `bob gun damage`
--   `bob kills`
--   `damage - bob`
--   `damage - bob charge`
--   `dynamite kills`
--   `damage - sonic`
--   `dragonstrike efficiency`
--   `dragonstrike kills`
--   `biotic field healing done`
--   `biotic fields deployed`
--   `damage - helix rockets`
--   `helix rocket kills`
--   `damage - barrage`
--   `direct hit accuracy`
--   `rocket barrages`
--   `rocket direct hits`
--   `of rockets fired`
--   `secondary direct hits`
--   `torbj`
 -   `turret damage`
--   `coach gun kills`
--   `teleporter pads destroyed`
--   `blizzard efficiency`
--   `blizzard kills`
--   `enemies frozen`
--   `successful freezes`
--   `total time frozen`
--   `damage - earthshatter`
--   `earthshatter stuns`
--   `fire strike kills`
--   `charge kills`
--   `earthshatter efficiency`
--   `earthshatter kills`
--   `damage - tactical visor`
--   `tactical visors`
--   `barrage efficiency`
--   `barrage kills`
--   `damage - sentry turret`
--   `photon projector kills`
--   `primary fire average level`
--   `primary fire hits hits - level`
--   `damage - molten core`
 -   `turret kills`
--   `overload kills`
--   `damage - death blossom`
--   `death blossoms`
--   `tactical visor efficiency`
--   `tactical visor kills`
--   `hooks attempted`
--   `sentry turret kills`
--   `molten core efficiency`
--   `molten core kills`
--   `damage - venom mine`
--   `death blossom efficiency`
--   `death blossom kills`
--   `damage - meteor strike`
--   `deflection kills`
--   `infra-sight uptime`
--   `meteor strike efficiency`
--   `meteor strike kills`
+-   `turrets destroyed`
+-   `ultimates earned - fractional`
+-   `ultimates negated`
+-   `ultimates used`
+-   `unscoped accuracy`
+-   `unscoped hits`
+-   `unscoped shots`
+-   `valkyrie healing efficiency`
 -   `venom mine kills`
--   `damage - chain hook`
--   `enemies hooked`
--   `hook accuracy`
--   `damage - whole hog`
+-   `weapon accuracy`
+-   `weapon kills`
 -   `whole hog efficiency`
 -   `whole hog kills`
--   `damage - concussion mine`
--   `frag launcher direct hits`
--   `damage - weapon sentry`
--   `concussion mine kills`
--   `damage - weapon hammer`
--   `hammer kills`
--   `damage - weapon recon`
--   `sentry kills`
--   `damage - steel trap`
--   `enemies trapped`
--   `recon kills`
--   `damage - rip-tire`
--   `rip-tire efficiency`
--   `rip-tire kills`
--   `damage - weapon tank`
--   `damage - total mayhem`
--   `tank efficiency`
--   `tank kills`
--   `total mayhem kills`
+
+# players
+
+-   `alarm`
+-   `ameng`
+-   `anamo`
+-   `ans`
+-   `ansoonjae`
+-   `architect`
+-   `aspire`
+-   `assassin`
+-   `aztac`
+-   `beast`
+-   `bebe`
+-   `bernar`
+-   `bianca`
+-   `birdring`
+-   `blase`
+-   `bqb`
+-   `carpe`
+-   `changsik`
+-   `checkmate`
+-   `choihyobin`
+-   `choisehwan`
+-   `closer`
+-   `coldest`
+-   `colourhex`
+-   `cr0ng`
+-   `creative`
+-   `crimzo`
+-   `daan`
+-   `dalton`
+-   `danteh`
+-   `decay`
+-   `develop`
+-   `diem`
+-   `doha`
+-   `dreamer`
+-   `dridro`
+-   `edison`
+-   `eileen`
+-   `ellivote`
+-   `elsa`
+-   `eqo`
+-   `faith`
+-   `farway1987`
+-   `fate`
+-   `fdgod`
+-   `fearless`
+-   `feath5r`
+-   `fielder`
+-   `fire`
+-   `fits`
+-   `fleta`
+-   `flora`
+-   `frdwnr`
+-   `friday`
+-   `funnyastro`
+-   `fury`
+-   `ga9a`
+-   `gaebullssi`
+-   `gangnamjin`
+-   `gargoyle`
+-   `gator`
+-   `gesture`
+-   `glister`
+-   `godsb`
+-   `guxue`
+-   `gwangboong`
+-   `hadi`
+-   `hanbin`
+-   `happy`
+-   `hawk`
+-   `heesu`
+-   `highbee`
+-   `hotba`
+-   `hybrid`
+-   `hydration`
+-   `idk`
+-   `im37`
+-   `ir1s`
+-   `ivy`
+-   `izayaki`
+-   `jake`
+-   `jecse`
+-   `jerry`
+-   `jihun`
+-   `jimmy`
+-   `jinmu`
+-   `jjanggu`
+-   `jjonak`
+-   `joobi`
+-   `kaan`
+-   `kai`
+-   `kalios`
+-   `kaneki`
+-   `kariv`
+-   `kellex`
+-   `kevster`
+-   `krystal`
+-   `ksf`
+-   `lastro`
+-   `lateyoung`
+-   `leave`
+-   `leejaegon`
+-   `linkzr`
+-   `lip`
+-   `logix`
+-   `m1ka`
+-   `mag`
+-   `mandu`
+-   `mano`
+-   `marve1`
+-   `masaa`
+-   `mcd`
+-   `michelle`
+-   `mirror`
+-   `mmonk`
+-   `molanran`
+-   `molf1g`
+-   `molly`
+-   `moth`
+-   `muze`
+-   `mykaylee`
+-   `myunb0ng`
+-   `na1st`
+-   `naga`
+-   `neptuno`
+-   `nero`
+-   `nisha`
+-   `oge`
+-   `onigod`
+-   `pelican`
+-   `piggy`
+-   `profit`
+-   `punk`
+-   `rapel`
+-   `rascal`
+-   `rio`
+-   `ripa`
+-   `roolf`
+-   `sado`
+-   `seominsoo`
+-   `shax`
+-   `shockwave`
+-   `showcheng`
+-   `shredlock`
+-   `shu`
+-   `shy`
+-   `silver3`
+-   `skewed`
+-   `slime`
+-   `smurf`
+-   `sp9rk1e`
+-   `space`
+-   `sparkr`
+-   `stand1`
+-   `striker`
+-   `super`
+-   `ta1yo`
+-   `takoyaki`
+-   `tarocook1e`
+-   `teru`
+-   `tobi`
+-   `toyou`
+-   `tsuna`
+-   `ttuba`
+-   `twilight`
+-   `valentine`
+-   `vestola`
+-   `viol2t`
+-   `void`
+-   `whoru`
+-   `wya`
+-   `yaki`
+-   `yakpung`
+-   `yveltal`
