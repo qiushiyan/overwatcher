@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Query
-from typing import Optional, List
+from typing import List
 from api.utils import gen_response
 from api.db.db_session import db
 

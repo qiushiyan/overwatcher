@@ -20,7 +20,8 @@ db <- DB$new()
 ```
 
 ```{r}
-player_stats <- as.data.table(db$query("select distinct player_name, stat_name, hero_name, map_name from player_stats"))
+player_stats <- db$query("select distinct player_name, stat_name, hero_name, map_name from player_stats")
+map_round <- db$query("select distinct stage from maps")
 ```
 
 ```{r}
@@ -28,6 +29,7 @@ stats <- player_stats[, .N, stat_name][order(stat_name)]$stat_name
 heroes <- player_stats[, .N, hero_name][order(hero_name)]$hero_name
 maps <- player_stats[, .N, map_name][order(map_name)]$map_name
 players <- player_stats[, .N, player_name][order(player_name)]$player_name
+stages <- unique(map_round[!is.na(stage), stage])
 ```
 
 
@@ -69,16 +71,23 @@ Below is a list of all available values ordered alphabetically for some query pa
 
 `r knitr::combine_words(heroes, sep = '\n', and = '', before = '- \x60', after = '\x60')`
 
-# maps 
+### maps 
 
 `r knitr::combine_words(maps, sep = '\n', and = '', before = '- \x60', after = '\x60')`
 
-##  stats
+###  stats
 
 
 `r knitr::combine_words(stats, sep = '\n', and = '', before = '- \x60', after = '\x60')`
 
-# players 
+### players 
 
 
 `r knitr::combine_words(players, sep = '\n', and = '', before = '- \x60', after = '\x60')`
+
+
+### stages 
+
+(Starting from the third stage, owl stats lab did not distinguish between regular season and playoffs)
+
+`r knitr::combine_words(stages, sep = '\n', and = '', before = '- \x60', after = '\x60')`

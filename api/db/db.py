@@ -33,7 +33,10 @@ class Database:
         op_value = first_dict_value(op_pair)
         op = self.__operators.get(op_name)
         if op != "in":
-            return f"{col} {op} '{op_value}'"
+            if (value_type := op_pair.get("type")) is None:
+                return f"{col} {op} '{op_value}'"
+            elif value_type == "numeric":
+                return f"{col} {op} {op_value}"
         else:
             values = "(" + ", ".join(["'" + i + "'" for i in op_value]) + ")"
             return f"{col} in {values}"
@@ -130,7 +133,7 @@ class Database:
         return df
 
     @safely
-    def fetch_matches(self, select_cols: List[str], player_names: List[str], date: date, min_date: date, max_date: date, team_names: List[str], stats: List[str], heroes: List[str], maps: List[str], skip: int, limit: int):
+    def fetch_matches(self, select_cols: List[str], player_names: List[str], date: date, min_date: date, max_date: date, team_names: List[str], stats: List[str], heroes: List[str], maps: List[str], match_id: int, skip: int, limit: int):
         conditions = []
         if player_names is not None:
             conditions.append({
@@ -163,6 +166,10 @@ class Database:
         if maps is not None:
             conditions.append({
                 "map_name": {"in": maps}
+            })
+        if match_id is not None:
+            conditions.append({
+                "match_id": {"eq": match_id, "type": "numeric"}
             })
 
         sql = self.compose_sql(from_table="matches",

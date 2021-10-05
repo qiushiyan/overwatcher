@@ -5,6 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from api.player_info import app_player_info
 from api.player_stat import app_player_stats
 from api.matches import app_matches
+from api.maps import app_maps
 from api.db.db_session import db
 from api.config import Settings
 
@@ -28,6 +29,16 @@ def startup():
 def shutdown():
     db.close()
 
+
+@app.get("/")
+def hello():
+    return {
+        "error_code": 1,
+        "msg": "welcome to overwatch league statistics api, available routes are /player_info, /player_stats, /matches and /maps, visit https://github.com/qiushiyan/overwatcher for documentation",
+        "data": "",
+        "error": ""
+    }
+
 # swagger theming
 
 
@@ -48,6 +59,9 @@ app.include_router(app_player_stats, prefix="/player_stats",
 
 app.include_router(app_matches, prefix="/matches",
                    tags=["per match player statistics"])
+
+app.include_router(app_maps, prefix="/maps",
+                   tags=["map attack/defend round statistics"])
 
 if __name__ == '__main__':
     uvicorn.run('main:app', host='0.0.0.0', port=8000,

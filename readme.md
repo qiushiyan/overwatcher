@@ -80,7 +80,7 @@ query parameters. Note that all values should be lowercase.
 -   `zarya`
 -   `zenyatta`
 
-# maps
+### maps
 
 -   `blizzard world`
 -   `busan`
@@ -102,7 +102,7 @@ query parameters. Note that all values should be lowercase.
 -   `volskaya industries`
 -   `watchpoint: gibraltar`
 
-## stats
+### stats
 
 -   `ability damage done`
 -   `accretion kills`
@@ -463,7 +463,7 @@ query parameters. Note that all values should be lowercase.
 -   `whole hog efficiency`
 -   `whole hog kills`
 
-# players
+### players
 
 -   `alarm`
 -   `ameng`
@@ -639,3 +639,25 @@ query parameters. Note that all values should be lowercase.
 -   `yaki`
 -   `yakpung`
 -   `yveltal`
+
+### stages
+
+(Starting from the third stage, owl stats lab did not distinguish
+between regular season and playoffs)
+
+-   `season1 stage1`
+-   `season1 stage1 title`
+-   `season1 stage2`
+-   `season1 stage3`
+-   `season1 stage4`
+-   `season1 playoff`
+-   `season2 stage1`
+-   `season2 stage1 title`
+-   `season2 stage2`
+-   `season2 stage2 title`
+-   `season2 stage3`
+-   `season2 stage3 title`
+-   `season2 stage4`
+-   `season2 playoff`
+-   `season3`
+-   `season4`

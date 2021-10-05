@@ -29,7 +29,7 @@ create_DB <- function() {
               dbWriteTable(private$con, table_name, dt, overwrite = overwrite, row.names = row.names)
             },
             query = function(statement) {
-              dbGetQuery(private$con, statement)
+              as.data.table(dbGetQuery(private$con, statement))
             },
             refresh_connection = function() {
               self$initialize()

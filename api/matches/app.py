@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Query, Path
-from typing import Optional, List
+from typing import List
 from datetime import date
 from api.utils import gen_response
 from api.db.db_session import db
@@ -26,8 +26,10 @@ statistics name, including but not limited to
         None, description="hero name"),
     maps: List[str] = Query(
         None, description="map name", alias="map"),
-    skip: Optional[int] = Query(0, ge=0, description="rows to skip"),
-    limit: Optional[int] = Query(
+    match_id: int = Query(
+        None, description="map id, can be used to join on maps"),
+    skip: int = Query(0, ge=0, description="rows to skip"),
+    limit: int = Query(
         None, ge=1, description="maximum number of records")):
     """
     get average match statistics (season 4 only)
@@ -42,5 +44,5 @@ statistics name, including but not limited to
     - count (number of occurrences)
     """
     res = db.fetch_matches(select_cols, player_names, date, min_date,
-                           max_date, team_names, stats, heroes, maps, skip, limit)
+                           max_date, team_names, stats, heroes, maps, match_id, skip, limit)
     return gen_response(res)
