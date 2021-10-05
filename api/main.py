@@ -2,11 +2,11 @@ from fastapi import FastAPI
 import uvicorn
 from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.staticfiles import StaticFiles
-from player_info import app_player_info
-from player_stat import app_player_stats
-from matches import app_matches
-from db.db_session import db
-from config import Settings
+from api.player_info import app_player_info
+from api.player_stat import app_player_stats
+from api.matches import app_matches
+from api.db.db_session import db
+from api.config import Settings
 
 settings = Settings()
 

@@ -2,7 +2,7 @@ from fastapi import APIRouter, Query, Path
 from fastapi.params import Depends
 from typing import Optional, List
 from api.utils import gen_response
-from db.db_session import db
+from api.db.db_session import db
 
 app_maps = APIRouter()
 
