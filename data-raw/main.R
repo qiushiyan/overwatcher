@@ -25,3 +25,8 @@ db$write_dt(data$matches, "matches")
 db$query("ALTER TABLE player_info MODIFY COLUMN birth DATE")
 db$query("ALTER TABLE matches MODIFY COLUMN date DATE")
 db$query("ALTER TABLE maps MODIFY COLUMN match_date DATE")
+
+# build rmd 
+box::use(rmarkdown[render])
+render("readme.Rmd", output_file = "readme.md", output_dir = "..")
+file.remove("../readme.html")

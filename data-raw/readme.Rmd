@@ -1,0 +1,83 @@
+---
+output: github_document
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r}
+box::use(data.table[...])
+box::use(./db[create_DB])
+
+DB <- create_DB()
+db <- DB$new()
+```
+
+```{r}
+player_stats <- as.data.table(db$query("select distinct stat_name, hero_name, map_name from player_stats"))
+```
+
+```{r}
+stats <- player_stats[, .N, stat_name][order(-N)]$stat_name
+heroes <- player_stats[, .N, hero_name][order(hero_name)]$hero_name
+maps <- player_stats[, .N, map_name][order(map_name)]$map_name
+```
+
+
+
+# Overwatcher: Overwatch League Statistics API
+
+`overwatcher` provides API for accessing [Overwatch League](https://overwatchleague.com/) statics on match, map and player level. 
+
+The data comes from two sources:
+
+
+- [Overwatch League Stats Lab](https://overwatchleague.com/zh-cn/statslab) including match and map statistics for all 4 seasons, currently only season 4 match statistics is presented in the app
+
+- [Liquipedia Player Wiki](https://liquipedia.net/overwatch/Players) including players' personal information
+
+## Tehcnologies 
+
+All API endpoints and swagger docs are implemented in Python's [FastAPI](https://fastapi.tiangolo.com/) framework. Data cleaning and scraping is done in R with [data.table](https://rdatatable.gitlab.io/data.table/). 
+
+
+## Available Query Parameters and values
+
+When it comes to match statistics, there are 3 important query parameters to pre-filter data and limit the analysis scope: stat, hero and map. For example, we may be interested to know how fleta's performance on tracer in Ilios, specifically, the average played time, hero damage and time alive. Then we can set query parameters on swagger as
+
+<img src="screenshots/set-query-parameters.png" />
+
+
+This generates curl commands
+
+```bash
+curl -X 'GET' \
+  'http://127.0.0.1:8000/player_stat/fleta?stat=all%20damage%20done&stat=time%20alive&stat=time%20played&hero=tracer&map=ilios' \
+  -H 'accept: application/json'
+```
+
+Below is a list of all available values for heroes, maps and stats. Note that all values should be lowercase.
+
+### heroes
+
+(ordered alphabetically)
+
+
+`r knitr::combine_words(heroes, sep = '\n', and = '', before = '- \x60', after = '\x60')`
+
+# maps 
+(ordered alphabetically)
+
+`r knitr::combine_words(maps, sep = '\n', and = '', before = '- \x60', after = '\x60')`
+
+##  stats
+
+(ordered by occurrences)
+
+`r knitr::combine_words(stats, sep = '\n', and = '', before = '- \x60', after = '\x60')`
