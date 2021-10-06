@@ -10,7 +10,7 @@ app_maps = APIRouter()
 @app_maps.get("/{name}")
 def get_map(name: str,
             select_cols: List[str] = Query(
-                None, desciption="default to all, see below for available columns"),
+                None, desciption="default to all, see above for available columns"),
             match_dates: List[date] = Query(None, description="match date"),
             stages: List[str] = Query(
                 None, description="owl stage"),

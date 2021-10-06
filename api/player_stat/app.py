@@ -9,9 +9,9 @@ app_player_stats = APIRouter()
 
 def other_query_params(
     select_cols: List[str] = Query(
-        None, description="default to all, see below for available columns"),
+        None, description="default to all, see above for available columns"),
     stats: List[str] = Query(None, description="""
-statistics name, for example
+included statistics, for example
 - general statiscis such as 'time alived', 'time played', 'eliminations', 'deaths'
 - hero-specific statistics such as 'scoped critical hits', 'inspire uptime' and 'healing accuracy'
 

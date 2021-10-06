@@ -10,7 +10,7 @@ app_matches = APIRouter()
 @app_matches.get("/")
 async def get_matches(
     select_cols: List[str] = Query(
-        None, description="default to all, see below for available columns"),
+        None, description="default to all, see above for available columns"),
     player_names: List[str] = Query(None, description="players"),
     dates: List[date] = Query(None, description="match date"),
     min_date: date = Query(
@@ -19,7 +19,7 @@ async def get_matches(
         None, description="max date, season 4 ends on 2021-09-26"),
     team_names: List[str] = Query(None, description="teams"),
     stats: List[str] = Query(None, description=f"""
-statistics name, for example
+included statistics, for example
 - general statiscis such as 'time alived', 'time played', 'eliminations', 'deaths'
 - hero-specific statistics such as 'scoped critical hits', 'inspire uptime' and 'healing accuracy'
 

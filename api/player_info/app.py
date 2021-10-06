@@ -8,7 +8,7 @@ app_player_info = APIRouter()
 
 
 @app_player_info.get("/{name}")
-async def get_player_info(name: str, select_cols: List[str] = Query(None, description="default to all, see below for available columns")):
+async def get_player_info(name: str, select_cols: List[str] = Query(None, description="default to all, see above for available columns")):
     """
     get personal information by player name
 
@@ -30,7 +30,7 @@ async def get_player_info(name: str, select_cols: List[str] = Query(None, descri
 
 
 @app_player_info.get("/")
-async def get_player_info_all(select_cols: List[str] = Query(None, description="default to all, see below for available columns")):
+async def get_player_info_all(select_cols: List[str] = Query(None, description="default to all, see above for available columns")):
     """
     get all players's personal information
 
