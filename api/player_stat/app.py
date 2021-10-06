@@ -11,13 +11,16 @@ def other_query_params(
     select_cols: List[str] = Query(
         None, description="default to all, see below for available columns"),
     stats: List[str] = Query(None, description="""
-statistics name, including but not limited to
+statistics name, for example
 - general statiscis such as 'time alived', 'time played', 'eliminations', 'deaths'
-- hero-specific statistics such as 'scoped critical hits', 'inspire uptime' and 'healing accuracy'"""),
+- hero-specific statistics such as 'scoped critical hits', 'inspire uptime' and 'healing accuracy'
+
+see full list at <https://github.com/qiushiyan/overwatcher#stats>
+"""),
     heroes: List[str] = Query(
-        None, description="hero name"),
+        None, description="included heroes, see full list at <https://github.com/qiushiyan/overwatcher#heroes>"),
     maps: List[str] = Query(
-        None, description="map name"),
+        None, description="included maps, see full list at <https://github.com/qiushiyan/overwatcher#maps>"),
 ):
     return {"select_cols": select_cols, "stats": stats, "heroes": heroes, "maps": maps, }
 

@@ -61,7 +61,7 @@ app.include_router(app_matches, prefix="/matches",
                    tags=["per match player statistics"])
 
 app.include_router(app_maps, prefix="/maps",
-                   tags=["map attack/defend round statistics"])
+                   tags=["per round map attack/defend statistics"])
 
 if __name__ == '__main__':
     uvicorn.run('main:app', host='0.0.0.0', port=8000,

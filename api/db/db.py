@@ -133,15 +133,15 @@ class Database:
         return df
 
     @safely
-    def fetch_matches(self, select_cols: List[str], player_names: List[str], date: date, min_date: date, max_date: date, team_names: List[str], stats: List[str], heroes: List[str], maps: List[str], match_id: int, skip: int, limit: int):
+    def fetch_matches(self, select_cols: List[str], player_names: List[str], dates: List[date], min_date: date, max_date: date, team_names: List[str], stats: List[str], heroes: List[str], maps: List[str], match_id: int, skip: int, limit: int):
         conditions = []
         if player_names is not None:
             conditions.append({
                 "player_name": {"in": player_names}
             })
-        if date is not None:
+        if dates is not None:
             conditions.append({
-                "date": {"eq": date}
+                "date": {"in": dates}
             })
         if min_date is not None:
             conditions.append({
@@ -173,6 +173,36 @@ class Database:
             })
 
         sql = self.compose_sql(from_table="matches",
+                               select_cols=select_cols,
+                               conditions=conditions,
+                               skip=skip,
+                               limit=limit)
+        df = pd.read_sql(sql, self.__con).fillna("")
+        return df
+
+    @safely
+    def fetch_maps(self, name: str, select_cols: List[str],  match_dates: List[str], stages: List[str], winners: List[str], losers: List[str], skip: int = 0, limit: int = None):
+        conditions = [{"map_name": {"eq": name}}]
+        if match_dates is not None:
+            conditions.append({
+                "match_date": {"in": match_dates}
+            })
+        if stages is not None:
+            conditions.append({
+                "stage": {"in": stages}
+            })
+
+        if winners is not None:
+            conditions.append({
+                "map_winner": {"in": winners}
+            })
+
+        if losers is not None:
+            conditions.append({
+                "map_loser": {"in": losers}
+            })
+
+        sql = self.compose_sql(from_table="maps",
                                select_cols=select_cols,
                                conditions=conditions,
                                skip=skip,

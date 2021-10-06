@@ -1,5 +1,5 @@
 box::use(data.table[...])
-box::use(dplyr[case_when])
+box::use(dplyr[case_when, if_else])
 box::use(stringr[str_to_lower])
 
 clean_common <- function(col) {
@@ -55,7 +55,15 @@ clean_maps <- function(maps_round, matches_raw) {
       stage == "owl 2020 regular season" ~ "season3", 
       stage == "owl 2021" ~ "season4",
       TRUE ~ NA_character_
-    ))
+    ), 
+    control_round_name = if_else(control_round_name == "null", NA_character_, control_round_name), 
+    attacker_payload_distance = if_else(map_type %in% c("control", "assault"), NA_real_, attacker_payload_distance),
+    defender_payload_distance = if_else(map_type %in% c("control", "assault"), NA_real_, defender_payload_distance),
+    attacker_time_banked = if_else(map_type == "control", NA_real_, attacker_payload_distance),
+    defender_time_banked = if_else(map_type == "control", NA_real_, defender_payload_distance),
+    attacker_control_percent = if_else(attacker_control_perecent == "null", NA_real_, as.numeric(attacker_control_perecent)),
+    defender_control_percent = if_else(defender_control_perecent == "null", NA_real_, as.numeric(defender_control_perecent))
+  )
   ][order(match_date)]
   maps 
 }

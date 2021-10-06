@@ -661,3 +661,10 @@ between regular season and playoffs)
 -   `season2 playoff`
 -   `season3`
 -   `season4`
+
+### map types
+
+-   `control`
+-   `hybrid`
+-   `payload`
+-   `assault`
