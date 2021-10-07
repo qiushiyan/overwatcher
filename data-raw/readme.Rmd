@@ -37,7 +37,19 @@ map_types <- unique(map_round[, map_type])
 
 # Overwatcher: Overwatch League Statistics API
 
-`overwatcher` provides API for accessing [Overwatch League](https://overwatchleague.com/) statics on match, map and player level. 
+`overwatcher` provides API for accessing [Overwatch League](https://overwatchleague.com/) statistics on match, map and player level. 
+
+
+Typical questions for the API the answer 
+
+
+- Which season 4 player is the best tracer in terms of average damage and sticky bomb hits? (`/player_stats`)
+
+- What is the total earnings for US owl players, and how much is it related to age?  (`/player_info`)
+
+- As season proceeds, how does sombra players evolve on EMP efficiency? (`/matches`)
+
+- In which match did two CP maps have the longest round duration and greatest number of rounds? (`/maps`)
 
 The data comes from two sources:
 
