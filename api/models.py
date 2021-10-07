@@ -1,19 +1,19 @@
-from pydantic import BaseModel, Field
-from typing import List
+from pydantic import BaseModel
+from typing import List, Union
 from datetime import date
 
 
 class PlayerStats(BaseModel):
-    names: List[str] or str = None
-    select_cols: List[str] or str = None
-    stats: List[str] or str = None
-    heroes: List[str] or str = None
-    maps: str = None
+    names: Union[List[str], str] = None
+    select_cols: Union[List[str], str] = None
+    stats: Union[List[str], str] = None
+    heroes: Union[List[str], str] = None
+    maps: Union[List[str], str] = None
 
     class Config:
         schema_extra = {
             "example": {
-                "names": "leave",
+                "names": ["leave"],
                 "select_cols": ["hero_name", "stat_name", "stat_mean"],
                 "stats": ["all damage done", "ability damage done", "average time alive"],
                 "heroes": ["tracer", "echo"],
@@ -23,12 +23,12 @@ class PlayerStats(BaseModel):
 
 
 class PlayerInfo(BaseModel):
-    names: List[str] or str = None
-    select_cols: List[str] or str = None
-    countries: List[str] or str = None
-    teams: List[str] or str = None
-    roles: List[str] or str = None
-    status: List[str] or str = None
+    names: Union[List[str], str] = None
+    select_cols: Union[List[str], str] = None
+    countries: Union[List[str], str] = None
+    teams: Union[List[str], str] = None
+    roles: Union[List[str], str] = None
+    status: Union[List[str], str] = None
 
     class Config:
         schema_extra = {
@@ -40,14 +40,14 @@ class PlayerInfo(BaseModel):
 
 
 class Map(BaseModel):
-    names: List[str] or str = None
-    select_cols: List[str] or str = None
-    match_dates: List[str] or str = None
+    names: Union[List[str], str] = None
+    select_cols: Union[List[str], str] = None
+    match_dates: Union[List[str], str] = None
     max_date: date = None
     min_date: date = None
-    stages: List[str] or str = None
-    winners: List[str] or str = None
-    losers: List[str] or str = None
+    stages: Union[List[str], str] = None
+    winners: Union[List[str], str] = None
+    losers: Union[List[str], str] = None
     skip: int = 0
     limit: int = None
 
@@ -61,16 +61,16 @@ class Map(BaseModel):
 
 
 class Match(BaseModel):
-    select_cols: List[str] or str = None
-    player_names: List[str] or str = None
+    select_cols: Union[List[str], str] = None
+    player_names: Union[List[str], str] = None
     dates: List[str] = None
     max_date: str = None
     min_date: str = None
-    team_names: List[str] or str = None
-    stats: List[str] or str = None
-    heroes: List[str] or str = None
-    maps: List[str] or str = None
-    match_id: int or List[int] = None
+    team_names: Union[List[str], str] = None
+    stats: Union[List[str], str] = None
+    heroes: Union[List[str], str] = None
+    maps: Union[List[str], str] = None
+    match_id: Union[List[int], int] = None
     skip: int = 0
     limit: int = None
 
