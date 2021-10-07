@@ -20,7 +20,7 @@ def safely(func):
             res = func(*args, **kwargs)
             return res
         except Exception as e:
-            return e
+            return repr(e)
     return wrapper
 
 

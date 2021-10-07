@@ -3,20 +3,21 @@ from typing import List
 from datetime import date
 from api.utils import gen_response
 from api.db.db_session import db
+from api.models import Match
 
 app_matches = APIRouter()
 
 
-@app_matches.get("/")
+@app_matches.get("")
 async def get_matches(
     select_cols: List[str] = Query(
         None, description="default to all, see above for available columns"),
     player_names: List[str] = Query(None, description="players"),
     dates: List[date] = Query(None, description="match date"),
-    min_date: date = Query(
-        None, description="min date, season 4 starts on 2021-04-16"),
     max_date: date = Query(
         None, description="max date, season 4 ends on 2021-09-26"),
+    min_date: date = Query(
+        None, description="min date, season 4 starts on 2021-04-16"),
     team_names: List[str] = Query(None, description="teams"),
     stats: List[str] = Query(None, description=f"""
 included statistics, for example
@@ -46,6 +47,12 @@ see full list at <https://github.com/qiushiyan/overwatcher#stats>
     - stat_mean (average value of that stat)
     - count (number of matches)
     """
-    res = db.fetch_matches(select_cols, player_names, dates, min_date,
-                           max_date, team_names, stats, heroes, maps, match_id, skip, limit)
+    res = db.fetch_matches(select_cols, player_names, dates, max_date,
+                           min_date, team_names, stats, heroes, maps, match_id, skip, limit)
+    return gen_response(res)
+
+
+@app_matches.post("")
+async def get_mathes_post(match: Match):
+    res = db.fetch_matches(**match.dict())
     return gen_response(res)

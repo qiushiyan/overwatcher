@@ -31,15 +31,28 @@ class Database:
         op_pair = condition.get(col)
         op_name = first_dict_key(op_pair)
         op_value = first_dict_value(op_pair)
+        value_type = op_pair.get("type")
         op = self.__operators.get(op_name)
         if op != "in":
-            if (value_type := op_pair.get("type")) is None:
+            if value_type is None:
                 return f"{col} {op} '{op_value}'"
             elif value_type == "numeric":
                 return f"{col} {op} {op_value}"
         else:
-            values = "(" + ", ".join(["'" + i + "'" for i in op_value]) + ")"
-            return f"{col} in {values}"
+            # could pass a scalar value in post request
+            if value_type is None:
+                if isinstance(op_value, list):
+                    values = "(" + ", ".join(["'" + i +
+                                              "'" for i in op_value]) + ")"
+                    return f"{col} in {values}"
+                else:
+                    return f"{col} = '{op_value}'"
+            elif value_type == "numeric":
+                if isinstance(op_value, list):
+                    values = "(" + ", ".join([i for i in op_value]) + ")"
+                    return f"{col} in {values}"
+                else:
+                    return f"{col} = {op_value}"
 
     def compose_sql(self,
                     from_table: str,
@@ -71,49 +84,42 @@ class Database:
             """
 
     @safely
-    def fetch_player_info(self, name: str, select_cols: List[str]):
-        sql = self.compose_sql(from_table="player_info",
-                               select_cols=select_cols,
-                               conditions=[
-                                   {"player_name": {"eq": name}}])
-        df = pd.read_sql(sql, self.__con).fillna("")
-        return df
-
-    @safely
-    def fetch_player_info_all(self, select_cols: List[str], skip: int = 0, limit: int = None):
-        sql = self.compose_sql(from_table="player_info",
-                               select_cols=select_cols,
-                               conditions=[],
-                               skip=skip,
-                               limit=limit)
-        df = pd.read_sql(sql, self.__con).fillna("")
-        return df
-
-    @safely
-    def fetch_player_stats(self, name: str, select_cols: List[str], stats: List[str], heroes: List[str], maps: List[str]):
-        conditions = [{"player_name": {"eq": name}}]
-        if stats is not None:
-            conditions.append({
-                "stat_name": {"in": stats},
-            })
-        if heroes is not None:
-            conditions.append({
-                "hero_name": {"in": heroes},
-            })
-        if maps is not None:
-            conditions.append({
-                "map_name": {"in": maps}
-            })
-
-        sql = self.compose_sql(from_table="player_stats",
-                               select_cols=select_cols,
-                               conditions=conditions)
-        df = pd.read_sql(sql, self.__con).fillna("")
-        return df
-
-    @safely
-    def fetch_player_stats_all(self,  select_cols: List[str], stats: List[str], heroes: List[str], maps: List[str]):
+    def fetch_player_info(self, names: str, select_cols: List[str] = None, countries: List[str] = None, teams: List[str] = None, roles: List[str] = None, status: List[str] = None):
         conditions = []
+        if names is not None:
+            conditions.append({
+                "player_name": {"in": names}
+            })
+        if countries is not None:
+            conditions.append({
+                "country": {"in": countries}
+            })
+        if teams is not None:
+            conditions.append({
+                "team_name": {"in": teams}
+            })
+        if roles is not None:
+            conditions.append({
+                "role": {"in": roles}
+            })
+        if status is not None:
+            conditions.append({
+                "status": {"in": status}
+            })
+
+        sql = self.compose_sql(from_table="player_info",
+                               select_cols=select_cols,
+                               conditions=conditions)
+        df = pd.read_sql(sql, self.__con).fillna("")
+        return df
+
+    @safely
+    def fetch_player_stats(self, names: str, select_cols: List[str], stats: List[str], heroes: List[str], maps: List[str]):
+        conditions = []
+        if names is not None:
+            conditions.append({
+                "player_name": {"in": names}
+            })
         if stats is not None:
             conditions.append({
                 "stat_name": {"in": stats},
@@ -126,30 +132,32 @@ class Database:
             conditions.append({
                 "map_name": {"in": maps}
             })
+
         sql = self.compose_sql(from_table="player_stats",
                                select_cols=select_cols,
                                conditions=conditions)
-        df = pd.read_sql(sql, self.__con)
+        df = pd.read_sql(sql, self.__con).fillna("")
         return df
 
     @safely
-    def fetch_matches(self, select_cols: List[str], player_names: List[str], dates: List[date], min_date: date, max_date: date, team_names: List[str], stats: List[str], heroes: List[str], maps: List[str], match_id: int, skip: int, limit: int):
+    def fetch_matches(self, select_cols: List[str], player_names: List[str], dates: List[date], max_date: date, min_date: date, team_names: List[str], stats: List[str], heroes: List[str], maps: List[str], match_id: int, skip: int, limit: int):
         conditions = []
         if player_names is not None:
             conditions.append({
                 "player_name": {"in": player_names}
             })
         if dates is not None:
+            dates = list(map(dates, str))
             conditions.append({
                 "date": {"in": dates}
             })
-        if min_date is not None:
-            conditions.append({
-                "date": {"ge": min_date}
-            })
         if max_date is not None:
             conditions.append({
-                "date": {"le": max_date}
+                "date": {"le": str(max_date)}
+            })
+        if min_date is not None:
+            conditions.append({
+                "date": {"ge": str(min_date)}
             })
         if team_names is not None:
             conditions.append({
@@ -181,11 +189,24 @@ class Database:
         return df
 
     @safely
-    def fetch_maps(self, name: str, select_cols: List[str],  match_dates: List[str], stages: List[str], winners: List[str], losers: List[str], skip: int = 0, limit: int = None):
-        conditions = [{"map_name": {"eq": name}}]
-        if match_dates is not None:
+    def fetch_maps(self, names: str, select_cols: List[str],  match_dates: List[str], max_date: date, min_date: date, stages: List[str], winners: List[str], losers: List[str], skip: int = 0, limit: int = None):
+        conditions = []
+        if names is not None:
             conditions.append({
-                "match_date": {"in": match_dates}
+                "map_name": {"in": names}
+            })
+        if match_dates is not None:
+            dates = [str(date) for date in match_dates]
+            conditions.append({
+                "match_date": {"in": dates}
+            })
+        if max_date is not None:
+            conditions.append({
+                "match_date": {"le": str(max_date)}
+            })
+        if min_date is not None:
+            conditions.append({
+                "match_date": {"ge": str(min_date)}
             })
         if stages is not None:
             conditions.append({

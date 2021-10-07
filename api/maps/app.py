@@ -1,8 +1,9 @@
 from fastapi import APIRouter, Query
 from typing import List
+from datetime import date
 from api.utils import gen_response
 from api.db.db_session import db
-from datetime import date
+from api.models import Map
 
 app_maps = APIRouter()
 
@@ -12,6 +13,8 @@ def get_map(name: str,
             select_cols: List[str] = Query(
                 None, desciption="default to all, see above for available columns"),
             match_dates: List[date] = Query(None, description="match date"),
+            max_date: date = Query(None, description="start date"),
+            min_date: date = Query(None, description="end date"),
             stages: List[str] = Query(
                 None, description="owl stage"),
             winners: List[str] = Query(None, description="map winner"),
@@ -49,5 +52,11 @@ def get_map(name: str,
     - round_duration (in minutes)
     """
     res = db.fetch_maps(name, select_cols, match_dates,
-                        stages, winners, losers, skip, limit)
+                        max_date, min_date, stages, winners, losers, skip, limit)
+    return gen_response(res)
+
+
+@app_maps.post("")
+async def get_map_post(map: Map):
+    res = db.fetch_maps(**map.dict())
     return gen_response(res)

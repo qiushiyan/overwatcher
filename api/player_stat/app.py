@@ -3,6 +3,7 @@ from fastapi.params import Depends
 from typing import List
 from api.utils import gen_response
 from api.db.db_session import db
+from api.models import PlayerStats
 
 app_player_stats = APIRouter()
 
@@ -44,11 +45,18 @@ async def get_player_stats(name: str = Path(..., description="player name"),
     return gen_response(res)
 
 
-@app_player_stats.get("/")
+@app_player_stats.post("")
+async def get_player_stats_post(player: PlayerStats):
+    res = db.fetch_player_stats(**player.dict())
+    return gen_response(res)
+
+
+@app_player_stats.get("")
 async def get_player_stats_all(
+        names: List[str] = Query(None, description="included players"),
         other_query_params: dict = Depends(other_query_params)):
     """
     get average match statistics of all players
     """
-    res = db.fetch_player_stats_all(**other_query_params)
+    res = db.fetch_player_stats(names, **other_query_params)
     return gen_response(res)
