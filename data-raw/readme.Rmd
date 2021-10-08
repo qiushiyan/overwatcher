@@ -65,7 +65,7 @@ All API endpoints and swagger docs are implemented in Python's [FastAPI](https:/
 
 ## Available Query Parameters and values
 
-When it comes to match statistics, there are 3 important query parameters to pre-filter data and limit the analysis scope: stat, hero and map. For example, we may be interested to know how fleta's performance on tracer in Ilios, specifically, the average played time, hero damage and time alive. Then we can set query parameters on swagger as
+When it comes to match statistics, there are 3 important query parameters to pre-filter data and limit the analysis scope: stat, hero and map. For example, we may be interested to know how fleta's performance on tracer in Ilios, specifically, the average played time, damage and time alive. Then we can set query parameters on swagger as
 
 <img src="screenshots/set-query-parameters.png" />
 
@@ -77,6 +77,27 @@ curl -X 'GET' \
   'http://127.0.0.1:8000/player_stat/fleta?stat=all%20damage%20done&stat=time%20alive&stat=time%20played&hero=tracer&map=ilios' \
   -H 'accept: application/json'
 ```
+
+There is also a POST version of the same request:
+
+```bash
+curl -X 'POST' \
+  'https://overwatcher-stat.herokuapp.com/player_stats' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "names": "fleta", 
+  "stats": [
+    "all damage done", 
+    "time played",
+    "time alive",
+  ],
+  "heroes": "tracer",
+  "maps": "ilios"
+}'
+```
+
+
 
 Below is a list of all available values ordered alphabetically for some query parameters. Note that all values should be lowercase.
 
