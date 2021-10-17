@@ -5,7 +5,7 @@ output: github_document
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-  echo = FALSE, 
+  echo = FALSE,
   message = FALSE,
   warning = FALSE
 )
@@ -37,10 +37,10 @@ map_types <- unique(map_round[, map_type])
 
 # Overwatcher: Overwatch League Statistics API
 
-`overwatcher` provides API for accessing [Overwatch League](https://overwatchleague.com/) statistics on match, map and player level. 
+`overwatcher` provides API for accessing [Overwatch League](https://overwatchleague.com/) statistics on match, map and player level.
 
 
-Typical questions for the API the answer 
+The API answers some typical problems
 
 
 - Which season 4 player is the best tracer in terms of average damage and sticky bomb hits? (`/player_stats`)
@@ -58,9 +58,9 @@ The data comes from two sources:
 
 - [Liquipedia Player Wiki](https://liquipedia.net/overwatch/Players) including players' personal information
 
-## Tehcnologies 
+## Tehcnologies
 
-All API endpoints and swagger docs are implemented in Python's [FastAPI](https://fastapi.tiangolo.com/) framework. Data cleaning and scraping is done in R with [data.table](https://rdatatable.gitlab.io/data.table/). 
+All API endpoints and swagger docs are implemented in Python's [FastAPI](https://fastapi.tiangolo.com/) framework. Data cleaning and scraping is done in R with [data.table](https://rdatatable.gitlab.io/data.table/).
 
 
 ## Available Query Parameters and values
@@ -86,9 +86,9 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "names": "fleta", 
+  "names": "fleta",
   "stats": [
-    "all damage done", 
+    "all damage done",
     "time played",
     "time alive",
   ],
@@ -105,7 +105,7 @@ Below is a list of all available values ordered alphabetically for some query pa
 
 `r knitr::combine_words(heroes, sep = '\n', and = '', before = '- \x60', after = '\x60')`
 
-### maps 
+### maps
 
 `r knitr::combine_words(maps, sep = '\n', and = '', before = '- \x60', after = '\x60')`
 
@@ -114,19 +114,19 @@ Below is a list of all available values ordered alphabetically for some query pa
 
 `r knitr::combine_words(stats, sep = '\n', and = '', before = '- \x60', after = '\x60')`
 
-### players 
+### players
 
 
 `r knitr::combine_words(players, sep = '\n', and = '', before = '- \x60', after = '\x60')`
 
 
-### stages 
+### stages
 
 (Starting from the third stage, owl stats lab did not distinguish between regular season and playoffs)
 
 `r knitr::combine_words(stages, sep = '\n', and = '', before = '- \x60', after = '\x60')`
 
-### map types 
+### map types
 
 
 `r knitr::combine_words(map_types, sep = '\n', and = '', before = '- \x60', after = '\x60')`
