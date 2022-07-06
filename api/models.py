@@ -1,6 +1,7 @@
-from pydantic import BaseModel
-from typing import List, Union
 from datetime import date
+from typing import List, Union
+
+from pydantic import BaseModel
 
 
 class PlayerStats(BaseModel):
@@ -15,9 +16,13 @@ class PlayerStats(BaseModel):
             "example": {
                 "names": ["leave"],
                 "select_cols": ["hero_name", "stat_name", "stat_mean"],
-                "stats": ["all damage done", "ability damage done", "average time alive"],
+                "stats": [
+                    "all damage done",
+                    "ability damage done",
+                    "average time alive",
+                ],
                 "heroes": ["tracer", "echo"],
-                "maps": "ilios"
+                "maps": "ilios",
             }
         }
 
@@ -34,7 +39,7 @@ class PlayerInfo(BaseModel):
         schema_extra = {
             "example": {
                 "teams": ["shanghai dragons", "atlanta reign"],
-                "roles": ["tank", "dps"]
+                "roles": ["tank", "dps"],
             }
         }
 
@@ -53,10 +58,7 @@ class Map(BaseModel):
 
     class Config:
         schema_extra = {
-            "example": {
-                "names": ["lijiang tower"],
-                "winners": ["shanghai dragons"]
-            }
+            "example": {"names": ["lijiang tower"], "winners": ["shanghai dragons"]}
         }
 
 
@@ -79,6 +81,6 @@ class Match(BaseModel):
             "example": {
                 "team_names": ["dallas fuel"],
                 "maps": ["blizzard world"],
-                "heroes": ["winston", "moira"]
+                "heroes": ["winston", "moira"],
             }
         }

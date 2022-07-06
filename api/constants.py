@@ -5,6 +5,7 @@ class Team(Enum):
     """
     all overwatch league teams
     """
+
     ATLANTA_REIGN = "atlanta reign"
     BOSTAN_UPRISING = "boston uprising"
     CHENGDU_HUNTERS = "chengdu hunters"
@@ -30,6 +31,7 @@ class Map(Enum):
     """
     all maps
     """
+
     BLIZZARD_WORLD = "blizzard world"
     BUSAN = "busan"
     DORADO = "dorado"
@@ -54,6 +56,7 @@ class MapType(Enum):
     """
     all map types
     """
+
     ASSULT = "assult"
     CONTROL = "control"
     HYBRID = "hybrid"
@@ -64,6 +67,7 @@ class Hero(Enum):
     """
     all heroes
     """
+
     ANA = "ana"
     ASHE = "ashe"
     BAPTISTE = "baptiste"

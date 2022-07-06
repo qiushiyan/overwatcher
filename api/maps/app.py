@@ -1,26 +1,29 @@
-from fastapi import APIRouter, Query
-from typing import List
 from datetime import date
-from api.utils import gen_response
+from typing import List
+
 from api.db.db_session import db
 from api.models import Map
+from api.utils import gen_response
+from fastapi import APIRouter, Query
 
 app_maps = APIRouter()
 
 
 @app_maps.get("/{name}")
-def get_map(name: str,
-            select_cols: List[str] = Query(
-                None, desciption="default to all, see above for available columns"),
-            match_dates: List[date] = Query(None, description="match date"),
-            max_date: date = Query(None, description="start date"),
-            min_date: date = Query(None, description="end date"),
-            stages: List[str] = Query(
-                None, description="owl stage"),
-            winners: List[str] = Query(None, description="map winner"),
-            losers: List[str] = Query(None, description="map loser"),
-            skip: int = 0,
-            limit: int = None):
+def get_map(
+    name: str,
+    select_cols: List[str] = Query(
+        None, description="default to all, see above for available columns"
+    ),
+    match_dates: List[date] = Query(None, description="match date"),
+    max_date: date = Query(None, description="start date"),
+    min_date: date = Query(None, description="end date"),
+    stages: List[str] = Query(None, description="owl stage"),
+    winners: List[str] = Query(None, description="map winner"),
+    losers: List[str] = Query(None, description="map loser"),
+    skip: int = 0,
+    limit: int = None,
+):
     """
     get per-round attack/defend statistics by map name (matches accross all 4 seasons)
 
@@ -51,8 +54,18 @@ def get_map(name: str,
     - match_date
     - round_duration (in minutes)
     """
-    res = db.fetch_maps(name, select_cols, match_dates,
-                        max_date, min_date, stages, winners, losers, skip, limit)
+    res = db.fetch_maps(
+        name,
+        select_cols,
+        match_dates,
+        max_date,
+        min_date,
+        stages,
+        winners,
+        losers,
+        skip,
+        limit,
+    )
     return gen_response(res)
 
 
