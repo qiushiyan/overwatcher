@@ -1,10 +1,10 @@
 # Overwatcher: Overwatch League Statistics API
 
 `overwatcher` provides API for accessing [Overwatch
-League](https://overwatchleague.com/) statistics on match, map and
+League](https://overwatchleague.com/) statistics on match, map or
 player level.
 
-The API answers some typical problemsY
+The API is able to answer typical questions such as 
 
 - Which season 4 player is the best tracer in terms of average damage
   and sticky bomb hits? (`/player_stats`)
