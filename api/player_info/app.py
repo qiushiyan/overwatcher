@@ -1,16 +1,20 @@
-from fastapi import APIRouter, Query
 from typing import List
+
+from api.db.db_session import db
 from api.models import PlayerInfo
 from api.utils import gen_response
-from api.db.db_session import db
-
+from fastapi import APIRouter, Query
 
 app_player_info = APIRouter()
 
 
 @app_player_info.get("/{name}")
-async def get_player_info(name: str,
-                          select_cols: List[str] = Query(None, description="default to all, see above for available columns")):
+async def get_player_info(
+    name: str,
+    select_cols: List[str] = Query(
+        None, description="default to all, see above for available columns"
+    ),
+):
     """
     get personal information by player name
 
@@ -32,13 +36,16 @@ async def get_player_info(name: str,
 
 
 @app_player_info.get("")
-async def get_player_info_all(names: List[str] = Query(None, description="included players"),
-                              select_cols: List[str] = Query(
-                                  None, description="default to all, see above for available columns"),
-                              countries: List[str] = Query(None),
-                              teams: List[str] = Query(None),
-                              roles: List[str] = Query(None),
-                              status: List[str] = Query(None)):
+async def get_player_info_all(
+    names: List[str] = Query(None, description="included players"),
+    select_cols: List[str] = Query(
+        None, description="default to all, see above for available columns"
+    ),
+    countries: List[str] = Query(None),
+    teams: List[str] = Query(None),
+    roles: List[str] = Query(None),
+    status: List[str] = Query(None),
+):
     """
     get all players's personal information
 
@@ -55,8 +62,7 @@ async def get_player_info_all(names: List[str] = Query(None, description="includ
     - signature_hero (heroes the player is most known for, separated by new lines)
     - age
     """
-    res = db.fetch_player_info(
-        names, select_cols, countries, teams, roles, status)
+    res = db.fetch_player_info(names, select_cols, countries, teams, roles, status)
     return gen_response(res)
 
 

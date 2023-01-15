@@ -5,10 +5,10 @@ box::use(stringr[str_to_lower])
 clean_common <- function(col) {
   if (is.character(col)) {
     str_to_lower(col)
-  } else if (is.numeric(col))  {
+  } else if (is.numeric(col)) {
     round(col, 2)
   } else {
-    col 
+    col
   }
 }
 
@@ -16,9 +16,9 @@ read_all <- function(db, s3_url_map, s3_url_match, s3_url_player) {
   matches_raw <- (db$read_s3(s3_url_match))[stat_name != "NULL", lapply(.SD, clean_common)]
   maps_round <- (db$read_s3(s3_url_map))[, lapply(.SD, clean_common)]
   player_info <- (db$read_s3)(s3_url_player)[, lapply(.SD, clean_common)]
-  list(matches_raw = matches_raw, 
-       maps_round = maps_round,
-       player_info = player_info)
+  list(matches_raw = matches_raw,
+    maps_round = maps_round,
+    player_info = player_info)
 }
 
 
@@ -26,13 +26,13 @@ clean_maps <- function(maps_round, matches_raw) {
   mtype <- unique(matches_raw[, .(map_type, map_name)])
   maps <- maps_round[mtype, on = "map_name"][
     , `:=`(match_date = max(as.IDate(round_start_time)),
-          round_duration = round(as.numeric(round_end_time - round_start_time)/60, 1)), 
+      round_duration = round(as.numeric(round_end_time - round_start_time) / 60, 1)),
     match_id
   ][
-    , `:=`(attacker = NULL, 
-           defender = NULL, 
-           round_start_time = NULL, 
-           round_end_time = NULL)
+    , `:=`(attacker = NULL,
+      defender = NULL,
+      round_start_time = NULL,
+      round_end_time = NULL)
   ][
     , `:=`(stage = case_when(
       stage == "overwatch league - stage 1" ~ "season1 stage1",
@@ -43,50 +43,50 @@ clean_maps <- function(maps_round, matches_raw) {
       stage == "overwatch league - stage 3 - title matches" ~ "season1 stage3 title",
       stage == "overwatch league - stage 4" ~ "season1 stage4",
       stage == "overwatch league - stage 4 - title matches" ~ "season1 stage4 title",
-      stage == "overwatch league inaugural season championship" ~ "season1 playoff", 
-      stage == "overwatch league stage 1" ~ "season2 stage1", 
-      stage == "overwatch league stage 1 title matches" ~ "season2 stage1 title", 
-      stage == "overwatch league stage 2" ~ "season2 stage2", 
-      stage == "overwatch league stage 2 title matches" ~ "season2 stage2 title", 
-      stage == "overwatch league stage 3" ~ "season2 stage3", 
-      stage == "overwatch league stage 3 title matches" ~ "season2 stage3 title", 
-      stage == "overwatch league stage 4" ~ "season2 stage4", 
-      stage == "overwatch league 2019 post-season" ~ "season2 playoff", 
-      stage == "owl 2020 regular season" ~ "season3", 
+      stage == "overwatch league inaugural season championship" ~ "season1 playoff",
+      stage == "overwatch league stage 1" ~ "season2 stage1",
+      stage == "overwatch league stage 1 title matches" ~ "season2 stage1 title",
+      stage == "overwatch league stage 2" ~ "season2 stage2",
+      stage == "overwatch league stage 2 title matches" ~ "season2 stage2 title",
+      stage == "overwatch league stage 3" ~ "season2 stage3",
+      stage == "overwatch league stage 3 title matches" ~ "season2 stage3 title",
+      stage == "overwatch league stage 4" ~ "season2 stage4",
+      stage == "overwatch league 2019 post-season" ~ "season2 playoff",
+      stage == "owl 2020 regular season" ~ "season3",
       stage == "owl 2021" ~ "season4",
       TRUE ~ NA_character_
-    ), 
-    control_round_name = if_else(control_round_name == "null", NA_character_, control_round_name), 
+    ),
+    control_round_name = if_else(control_round_name == "null", NA_character_, control_round_name),
     attacker_payload_distance = if_else(map_type %in% c("control", "assault"), NA_real_, attacker_payload_distance),
     defender_payload_distance = if_else(map_type %in% c("control", "assault"), NA_real_, defender_payload_distance),
     attacker_time_banked = if_else(map_type == "control", NA_real_, attacker_payload_distance),
     defender_time_banked = if_else(map_type == "control", NA_real_, defender_payload_distance),
     attacker_control_percent = if_else(attacker_control_perecent == "null", NA_real_, as.numeric(attacker_control_perecent)),
     defender_control_percent = if_else(defender_control_perecent == "null", NA_real_, as.numeric(defender_control_perecent))
-  )
+    )
   ][order(match_date)]
-  maps 
+  maps
 }
 
 
 clean_matches <- function(matches_raw) {
-  matches <- matches_raw[,  .(
-    match_id = esports_match_id, 
+  matches <- matches_raw[, .(
+    match_id = esports_match_id,
     date = as.IDate(start_time),
-    tournament = tournament_title, 
+    tournament = tournament_title,
     map_name,
     player_name,
-    team_name, 
+    team_name,
     hero_name = case_when(
-      hero_name == "lúcio" ~ "lucio", 
-      hero_name == "torbjörn" ~ "torbjorn", 
+      hero_name == "lúcio" ~ "lucio",
+      hero_name == "torbjörn" ~ "torbjorn",
       TRUE ~ hero_name
     ),
     stat_name,
     stat_amount)
   ]
-  
-  matches 
+
+  matches
 }
 
 clean_player_stats <- function(matches) {
@@ -94,18 +94,17 @@ clean_player_stats <- function(matches) {
     , .(stat_mean = mean(stat_amount), count = .N),
     .(player_name, hero_name, map_name, stat_name)
   ]
-  
+
   player_stats
 }
 
-#' @export 
+#' @export
 clean_all <- function(db, s3_url_map, s3_url_match, s3_url_player) {
   data <- read_all(db, s3_url_map, s3_url_match, s3_url_player)
-  
+
   maps <- clean_maps(data$maps_round, data$matches_raw)
   matches <- clean_matches(data$matches_raw)
   player_stats <- clean_player_stats(matches)
 
   list(player_info = data$player_info, player_stats = player_stats, maps = maps, matches = matches)
 }
-

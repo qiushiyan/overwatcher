@@ -12,7 +12,6 @@ from api.player_stat import app_player_stats
 
 settings = Settings()
 
-
 app = FastAPI(
     title=settings.app_title,
     description=settings.app_description,
@@ -20,7 +19,6 @@ app = FastAPI(
     docs_url=None,
     redoc_url=None,
 )
-
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 

@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 
 ```{r}
 box::use(data.table[...])
-box::use(./db[create_DB])
+box::use(. / db[create_DB])
 
 DB <- create_DB()
 db <- DB$new()
@@ -74,7 +74,7 @@ This generates curl commands
 
 ```bash
 curl -X 'GET' \
-  'http://127.0.0.1:8000/player_stat/fleta?stat=all%20damage%20done&stat=time%20alive&stat=time%20played&hero=tracer&map=ilios' \
+  'https://overwatcher-stat.herokuapp.com/player_stat/fleta?stat=all%20damage%20done&stat=time%20alive&stat=time%20played&hero=tracer&map=ilios' \
   -H 'accept: application/json'
 ```
 
@@ -97,8 +97,6 @@ curl -X 'POST' \
 }'
 ```
 
-
-
 Below is a list of all available values ordered alphabetically for some query parameters. Note that all values should be lowercase.
 
 ### heroes
@@ -116,9 +114,7 @@ Below is a list of all available values ordered alphabetically for some query pa
 
 ### players
 
-
 `r knitr::combine_words(players, sep = '\n', and = '', before = '- \x60', after = '\x60')`
-
 
 ### stages
 
