@@ -1,10 +1,11 @@
+
 # Overwatcher: Overwatch League Statistics API
 
 `overwatcher` provides API for accessing [Overwatch
-League](https://overwatchleague.com/) statistics on match, map or
+League](https://overwatchleague.com/) statistics on match, map and
 player level.
 
-The API is able to answer typical questions such as 
+The API answers some typical problems
 
 - Which season 4 player is the best tracer in terms of average damage
   and sticky bomb hits? (`/player_stats`)
@@ -12,8 +13,8 @@ The API is able to answer typical questions such as
 - What is the total earnings for US owl players, and how much is it
   related to age? (`/player_info`)
 
-- As season proceeds, how does sombra players evolve on EMP
-  efficiency? (`/matches`)
+- As season proceeds, how does sombra players evolve on EMP efficiency?
+  (`/matches`)
 
 - In which match did two CP maps have the longest round duration and
   greatest number of rounds? (`/maps`)
@@ -47,15 +48,15 @@ damage and time alive. Then we can set query parameters on swagger as
 
 This generates curl commands
 
-```bash
+``` bash
 curl -X 'GET' \
-  'http://127.0.0.1:8000/player_stat/fleta?stat=all%20damage%20done&stat=time%20alive&stat=time%20played&hero=tracer&map=ilios' \
+  'https://overwatcher-stat.herokuapp.com/player_stat/fleta?stat=all%20damage%20done&stat=time%20alive&stat=time%20played&hero=tracer&map=ilios' \
   -H 'accept: application/json'
 ```
 
 There is also a POST version of the same request:
 
-```bash
+``` bash
 curl -X 'POST' \
   'https://overwatcher-stat.herokuapp.com/player_stats' \
   -H 'accept: application/json' \
@@ -472,7 +473,7 @@ query parameters. Note that all values should be lowercase.
 - `time hacked`
 - `time holding ultimate`
 - `time played`
-- `torbj`
+- `torbjörn kills`
 - `total mayhem kills`
 - `total time frozen`
 - `transcendence efficiency`
@@ -676,26 +677,26 @@ query parameters. Note that all values should be lowercase.
 (Starting from the third stage, owl stats lab did not distinguish
 between regular season and playoffs)
 
-- `season1 stage1`
-- `season1 stage1 title`
-- `season1 stage2`
-- `season1 stage3`
-- `season1 stage4`
-- `season1 playoff`
-- `season2 stage1`
-- `season2 stage1 title`
 - `season2 stage2`
-- `season2 stage2 title`
-- `season2 stage3`
-- `season2 stage3 title`
 - `season2 stage4`
 - `season2 playoff`
-- `season3`
 - `season4`
+- `season1 stage3`
+- `season1 playoff`
+- `season2 stage2 title`
+- `season1 stage2`
+- `season2 stage1 title`
+- `season1 stage4`
+- `season3`
+- `season2 stage3 title`
+- `season1 stage1 title`
+- `season2 stage1`
+- `season1 stage1`
+- `season2 stage3`
 
 ### map types
 
-- `control`
-- `hybrid`
-- `payload`
 - `assault`
+- `hybrid`
+- `control`
+- `payload`

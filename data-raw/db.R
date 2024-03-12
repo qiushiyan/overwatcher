@@ -1,24 +1,20 @@
 box::use(DBI[dbConnect, dbGetQuery, dbWriteTable])
-box::use(RMySQL[MySQL])
+box::use(RPostgres[Postgres])
 box::use(vroom[vroom])
 box::use(R6[R6Class])
 box::use(data.table[...])
 
 #' @export
 create_DB <- function() {
-  R6Class("db connection to RDS",
+  R6Class("db connection",
     public = list(
-      initialize = function(dbname = "overwatcher",
-                            host = "overwatcher.cnuwuhvikj0e.us-east-1.rds.amazonaws.com",
-                            user = Sys.getenv("DB_OVERWATCHER_USER"),
-                            password = Sys.getenv("DB_OVERWATCHER_PASSWORD"),
-                            port = 3306) {
-        private$con <- dbConnect(MySQL(),
-          dbname = dbname,
-          host = host,
-          user = user,
-          password = password,
-          port = port)
+      initialize = function() {
+        private$con <- dbConnect(Postgres(),
+          dbname = "overwatcher",
+          host = Sys.getenv("OVERWATCHER_DB_HOST"),
+          user = Sys.getenv("OVERWATCHER_DB_USER"),
+          password = Sys.getenv("OVERWATCHER_DB_PASSWORD"),
+          port = 5432)
       },
       read_s3 = function(s3_url, name = NULL, n_max = Inf) {
         dt <- as.data.table(vroom(s3_url, n_max = n_max))

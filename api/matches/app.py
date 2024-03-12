@@ -4,7 +4,7 @@ from typing import List
 from api.db.db_session import db
 from api.models import Match
 from api.utils import gen_response
-from fastapi import APIRouter, Path, Query
+from fastapi import APIRouter, Query
 
 app_matches = APIRouter()
 
@@ -21,7 +21,7 @@ async def get_matches(
     team_names: List[str] = Query(None, description="teams"),
     stats: List[str] = Query(
         None,
-        description=f"""
+        description="""
 included statistics, for example
 - general statiscis such as 'time alived', 'time played', 'eliminations', 'deaths'
 - hero-specific statistics such as 'scoped critical hits', 'inspire uptime' and 'healing accuracy'

@@ -7,10 +7,8 @@ from api.utils import first_dict_key, first_dict_value, safely
 
 
 class Database:
-    def __init__(self, RDS_USER: str, RDS_PWD: str, RDS_URI: str):
-        self.engine = sqlalchemy.create_engine(
-            f"mysql+mysqlconnector://{RDS_USER}:{RDS_PWD}@{RDS_URI}:3306/overwatcher"
-        )
+    def __init__(self, database_url: str):
+        self.engine = sqlalchemy.create_engine(f"postgresql+pg8000://{database_url}")
         self.__operators = {
             "eq": "=",
             "ge": ">=",

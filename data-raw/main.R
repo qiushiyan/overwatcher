@@ -19,9 +19,9 @@ db$write_dt(data$maps, "maps")
 db$write_dt(data$matches, "matches")
 
 
-db$query("ALTER TABLE player_info MODIFY COLUMN birth DATE")
-db$query("ALTER TABLE matches MODIFY COLUMN date DATE")
-db$query("ALTER TABLE maps MODIFY COLUMN match_date DATE")
+db$query("ALTER TABLE player_info ALTER COLUMN birth TYPE DATE")
+db$query("ALTER TABLE matches ALTER COLUMN date TYPE DATE")
+db$query("ALTER TABLE maps ALTER COLUMN match_date TYPE DATE")
 
 # build readme
 box::use(rmarkdown[render])
