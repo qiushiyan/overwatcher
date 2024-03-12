@@ -2,7 +2,6 @@ from contextlib import asynccontextmanager
 import uvicorn
 from fastapi import FastAPI
 from fastapi.openapi.docs import get_swagger_ui_html
-from fastapi.staticfiles import StaticFiles
 
 from api.config import Settings
 from api.db.db_session import db
@@ -30,16 +29,11 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
 
 @app.get("/")
 def hello():
     return {
-        "error_code": 1,
-        "msg": "welcome to overwatch league statistics api, available routes are /player_info, /player_stats, /matches and /maps, visit https://github.com/qiushiyan/overwatcher for documentation",
-        "data": "",
-        "error": "",
+        "msg": "Welcome to overwatch league statistics api, available routes are /player_info, /player_stats, /matches and /maps, visit https://github.com/qiushiyan/overwatcher for documentation",
     }
 
 

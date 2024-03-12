@@ -9,8 +9,7 @@ from api.utils import first_dict_key, first_dict_value, safely
 class Database:
     def __init__(self, database_url: str):
         self.engine = sqlalchemy.create_engine(
-            f"postgresql+pg8000://{database_url}",
-            connect_args={"ssl_context": True},
+            f"postgresql+psycopg2://{database_url}",
         )
         self.__operators = {
             "eq": "=",
@@ -24,6 +23,9 @@ class Database:
 
     def connect(self):
         self.__con = self.engine.connect()
+
+    def close(self):
+        self.__con.close()
 
     def parse_condition(self, condition):
         """
