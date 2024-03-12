@@ -21,10 +21,10 @@ class Database:
             "in": "in",
         }
 
-    def connect(self):
+    def start(self):
         self.__con = self.engine.connect()
 
-    def close(self):
+    def shutdown(self):
         self.__con.close()
 
     def parse_condition(self, condition):

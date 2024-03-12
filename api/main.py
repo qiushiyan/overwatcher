@@ -15,9 +15,9 @@ settings = Settings()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    db.connect()
+    db.start()
     yield
-    db.close()
+    db.shutdown()
 
 
 app = FastAPI(
