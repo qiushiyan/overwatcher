@@ -8,7 +8,10 @@ from api.utils import first_dict_key, first_dict_value, safely
 
 class Database:
     def __init__(self, database_url: str):
-        self.engine = sqlalchemy.create_engine(f"postgresql+pg8000://{database_url}")
+        self.engine = sqlalchemy.create_engine(
+            f"postgresql+pg8000://{database_url}",
+            connect_args={"ssl_context": True},
+        )
         self.__operators = {
             "eq": "=",
             "ge": ">=",

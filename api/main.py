@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 import uvicorn
 from fastapi import FastAPI
 from fastapi.openapi.docs import get_swagger_ui_html
@@ -12,25 +13,24 @@ from api.player_stat import app_player_stats
 
 settings = Settings()
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    db.connect()
+    yield
+    db.close()
+
+
 app = FastAPI(
     title=settings.app_title,
     description=settings.app_description,
     version=settings.app_version,
     docs_url=None,
     redoc_url=None,
+    lifespan=lifespan,
 )
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
-
-
-@app.on_event("startup")
-def startup():
-    db.connect()
-
-
-@app.on_event("shutdown")
-def shutdown():
-    db.close()
 
 
 @app.get("/")
@@ -51,9 +51,6 @@ def overridden_swagger():
     return get_swagger_ui_html(
         openapi_url=app.openapi_url,
         title=app.title + " - Swagger UI",
-        oauth2_redirect_url=app.swagger_ui_oauth2_redirect_url,
-        swagger_css_url="/static/swagger-ui.css",
-        swagger_js_url="/static/swagger-ui-bundle.js",
     )
 
 
@@ -72,6 +69,4 @@ app.include_router(
 )
 
 if __name__ == "__main__":
-    uvicorn.run(
-        "main:app", host="0.0.0.0", port=8000, reload=True, debug=True, workers=1
-    )
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True, workers=1)

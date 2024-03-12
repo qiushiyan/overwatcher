@@ -1,9 +1,9 @@
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
     app_title: str = "Overwatcher"
-    app_description: str = f"""
+    app_description: str = """
 ## Overwatch League Match, Maps and Players API
 
 The data comes from two sources:

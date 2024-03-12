@@ -12,7 +12,7 @@ class PlayerStats(BaseModel):
     maps: Union[List[str], str] = None
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "names": ["leave"],
                 "select_cols": ["hero_name", "stat_name", "stat_mean"],
@@ -36,7 +36,7 @@ class PlayerInfo(BaseModel):
     status: Union[List[str], str] = None
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "teams": ["shanghai dragons", "atlanta reign"],
                 "roles": ["tank", "dps"],
@@ -57,7 +57,7 @@ class Map(BaseModel):
     limit: int = None
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {"names": ["lijiang tower"], "winners": ["shanghai dragons"]}
         }
 
@@ -77,7 +77,7 @@ class Match(BaseModel):
     limit: int = None
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "team_names": ["dallas fuel"],
                 "maps": ["blizzard world"],
